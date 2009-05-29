@@ -15,28 +15,15 @@ HadronStateSave
 	}
 	
 	showSaveDialog
-	{
-		var saveWin, pField, nField, okBut;
-		
-		saveWin = Window("Path and Name", Rect(300, 300, 220, 100), resizable: false);
-		StaticText(saveWin, Rect(10, 10, 50, 20)).string_("Path:");
-		StaticText(saveWin, Rect(10, 40, 50, 20)).string_("Name:");
-		
-		pField = TextField(saveWin, Rect(60, 10, 150, 20)).string_("~/Desktop/");
-		nField = TextField(saveWin, Rect(60, 40, 150, 20));
-		
-		okBut = Button(saveWin, Rect(10, 70, 80, 20))
-		.states_([["Ok"]])
-		.action_({ this.saveState(pField.string, nField.string); saveWin.close; });
-		
-		saveWin.front;
+	{		
+		File.saveDialog("Save project", {}, {|pathFile| this.saveState(pathFile); });
 	}
 	
 	saveState
-	{|argPath, argName|
+	{|argFile|
 		var outFile;
 		
-		outFile = File(argPath.standardizePath ++ argName, "w");
+		outFile = File(argFile, "w");
 		outFile.write("?Hadron 1\n");
 		outFile.write("?StartPlugs\n");
 		
@@ -98,9 +85,9 @@ HadronStateSave
 			(
 				item.uniqueID.asString
 				++ 31.asAscii
-				++ tempIn.asString
+				++ tempIn.asCompileString
 				++ 31.asAscii
-				++ tempOut.asString
+				++ tempOut.asCompileString
 				++ "\n"
 			);			
 		});

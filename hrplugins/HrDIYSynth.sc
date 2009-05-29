@@ -17,13 +17,17 @@ HrDIYSynth : HadronPlugin
 		window.background_(Color.gray(0.8));
 		helpString = "In1/In2 audio inputs, given as args to function. You must return 2 channels of audio inside function.";
 		
-		codeView = SCTextView(window, Rect(10, 10, 430, 350))
-		.string_("{ arg input; input; }")
-		.usesTabToFocusNextView_(false)
-		.enterInterpretsSelection_(false)
-		.editable_(true);
-		
-		this.redefineSynth(codeView.string.interpret);
+		{
+			codeView = TextView(window, Rect(10, 10, 430, 350))
+			.string_("{ arg input; input; }")
+			.usesTabToFocusNextView_(false)
+			.enterInterpretsSelection_(false)
+			.editable_(true);
+			
+			if(GUI.id == \swing, { SwingOSC.default.sync; });
+			
+			this.redefineSynth(codeView.string.interpret);
+		}.fork(AppClock);
 		
 		Button(window, Rect(10, 370, 80, 20)).states_([["Evaluate"]])
 		.action_
@@ -31,20 +35,7 @@ HrDIYSynth : HadronPlugin
 			this.redefineSynth(codeView.string.interpret);
 		});
 		
-		fork
-		{
-			sDef.memStore;
-			Server.default.sync;
-			
-			synthInstance = 
-			Synth("hrDIYSynth"++uniqueID, 
-				[
-					\inBus0, inBusses[0], 
-					\inBus1, inBusses[1],
-					\outBus0, outBusses[0],
-					\outBus1, outBusses[1]
-				], target: group);
-		};
+		//this.redefineSynth(codeView.string.interpret);
 		
 		saveGets =
 			[
@@ -81,7 +72,7 @@ HrDIYSynth : HadronPlugin
 			
 			Server.default.sync;
 			
-			synthInstance.free;
+			if(synthInstance.notNil, { synthInstance.free; });
 			synthInstance = 
 			Synth("hrDIYSynth"++uniqueID, 
 				[
@@ -95,7 +86,10 @@ HrDIYSynth : HadronPlugin
 	
 	wakeFromLoad
 	{
-		this.redefineSynth(codeView.string.interpret);
+		{
+			if(GUI.id == \swing, { SwingOSC.default.sync; });
+			this.redefineSynth(codeView.string.interpret);
+		}.fork(AppClock);
 	}
 	
 	updateBusConnections

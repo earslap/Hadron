@@ -80,6 +80,13 @@ HadronCanvasItem
 		.mouseDownAction_
 		({|...args|
 		
+			//swingosc has different mouse button and keymod bindings
+			if(GUI.id == \swing, 
+			{ 
+				args[4].switch( 1, { args[4] = 0; }, 3, { args[4] = 1; }); //button bindings
+				args[3].switch( 0, { args[3] = 256; }, 131072, { args[3] = 131330; }); //keyboard bindings
+			});
+			
 			args[5].switch
 			(
 				2, //if double clicked

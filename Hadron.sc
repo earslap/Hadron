@@ -2,7 +2,7 @@ Hadron
 {
 	classvar <>plugins, <>loadDelay = 2;
 	var win, <alivePlugs, <blackholeBus, <aliveMenu, <idPlugDict, <canvasObj,
-	statusView, statusStString;
+	statusView, <statusStString;
 	
 	
 	*initClass
@@ -38,6 +38,7 @@ Hadron
 			
 			blackholeBus = Bus.audio(Server.default, 1);
 			win = Window("Hadron", Rect(100, 100, 600, 70), resizable: false).userCanClose_(false);
+			
 			Button(win, Rect(10, 15, 85, 20))
 			.states_
 			([
@@ -128,6 +129,8 @@ Hadron
 		idPlugDict.put(tempHolder.uniqueID, tempHolder);
 		this.prActiveMenuUpdate;
 		alivePlugs.do(_.notifyPlugAdd(tempHolder));
+		
+		this.reorderGraph;
 	}
 	
 	prShowNewInstDialog
@@ -149,9 +152,9 @@ Hadron
 			this.prAddPlugin
 			(
 				tempMenu.items.at(tempMenu.value).interpret, 
-				if(tempIdent.string == "", { "unnamed"; }, { tempIdent.string; }),
+				if(tempIdent.string.size == 0, { "unnamed"; }, { tempIdent.string; }),
 				nil,
-				if(tempArgs.string == "", { nil; }, { tempArgs.string.split($ ); }),
+				if(tempArgs.string.size == 0, { nil; }, { tempArgs.string.split($ ); }),
 				100@100
 			);
 			tempWin.close;
@@ -177,6 +180,25 @@ Hadron
 	
 		statusStString.remove;
 		statusStString = StaticText(statusView, Rect(10, 2, win.view.bounds.width, 15)).string_(argString);
+	}
+	
+	reorderGraph
+	{//lame ordering based on vertical alignment on canvas. effective though...
+	
+		var yOrder;
+		
+		if(alivePlugs.size > 0,
+		{
+			yOrder = alivePlugs.collect({|item| item.boundCanvasItem.objView.bounds.top; }).order.order;
+			
+			(yOrder.size - 1).do
+			({|cnt|
+				
+				alivePlugs[yOrder.indexOf(cnt+1)].group.moveAfter(alivePlugs[yOrder.indexOf(cnt)].group);
+			});
+		
+		});
+		//Server.default.queryAllNodes;
 	}
 	
 	graceExit

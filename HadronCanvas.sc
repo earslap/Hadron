@@ -26,7 +26,7 @@ HadronCanvas
 		
 		oldBounds = Rect(10, Window.screenBounds.height - 550, 800, 500);
 		
-		cWin = Window("Canvas", Rect(0, 0, 0, 0))
+		cWin = Window("Canvas", oldBounds)
 		.userCanClose_(false)
 		.acceptsMouseOver_(true);
 		
@@ -73,6 +73,8 @@ HadronCanvas
 			var tempPlugStr;
 			var tempID = nil;
 			
+			//swingosc has different mouse button bindings.
+			if(GUI.id == \swing, { button.switch( 1, { button = 0; }, 3, { button = 1; }); });
 			//[view, x, y, mod, button, cCount].postln;
 			button.switch
 			(
@@ -155,6 +157,8 @@ HadronCanvas
 			
 		});
 		
+		//Hacky hiding after the inner view is created, or inner view bounds get messed up in SwingOSC.
+		cWin.bounds_(Rect(0, 0, 0, 0)); //hidden by default.
 		cWin.front;		
 	}
 	
@@ -214,6 +218,7 @@ HadronCanvas
 	{|view, char, modifiers, unicode, keycode|
 	
 		var coord1, coord2, topItem;
+		var schedOldText;
 	
 		//[view, char, modifiers, unicode, keycode].postln;
 		if(unicode == 127 and: { this.selectedItems.size > 0 }, //if delete pressed, and there are selected items...
@@ -230,7 +235,18 @@ HadronCanvas
 			
 			HadronConManager(selectedItems[topItem].parentPlugin, selectedItems[1-topItem].parentPlugin);
 			^this;
-		})
+		});
+		
+		if(char == $o, 
+		{ 
+			parentApp.reorderGraph;
+			schedOldText = parentApp.statusStString.string.copy;
+			parentApp.displayStatus("Ordered nodes based on vertical alignment on canvas...");
+			AppClock.sched(4, { parentApp.displayStatus(schedOldText); nil; });
+			^this; 
+		});
+		
+		if(char == $q, { Server.default.queryAllNodes; });
 	}
 	
 	deleteSelected

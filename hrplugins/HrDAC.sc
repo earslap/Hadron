@@ -41,7 +41,7 @@ HrDAC : HadronPlugin
 		
 		fork
 		{
-			SynthDef("hrOuter"++uniqueID,
+			SynthDef("hrDAC"++uniqueID,
 			{
 				arg inBus1, inBus2, level = 1, limiter = 0;
 				var sound = [InFeedback.ar(inBus1), InFeedback.ar(inBus2)];
@@ -50,7 +50,7 @@ HrDAC : HadronPlugin
 			}).memStore;
 			
 			Server.default.sync;
-			synthInstance = Synth("hrOuter"++uniqueID, [\inBus1, inBusses[0], \inBus2, inBusses[1]], group);
+			synthInstance = Synth("hrDAC"++uniqueID, [\inBus1, inBusses[0], \inBus2, inBusses[1]], group);
 		};
 		
 		saveGets =
