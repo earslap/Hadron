@@ -17,7 +17,7 @@ HadronStateLoad
 	
 	showLoad
 	{
-		File.openDialog("", {|aFile| this.loadState(aFile); });
+		File.openDialog("", {|aFile| parentApp.alivePlugs.size.do({ parentApp.alivePlugs[0].selfDestruct; }); this.loadState(aFile); });
 	}
 	
 	loadState
@@ -94,6 +94,7 @@ HadronStateLoad
 			{
 				parentApp.alivePlugs.do(_.wakeFromLoad);
 				parentApp.canvasObj.drawCables;
+				parentApp.isDirty = false;
 				"State loaded...".postln;
 			});
 			

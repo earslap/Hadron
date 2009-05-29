@@ -2,7 +2,7 @@ Hadron
 {
 	classvar <>plugins, <>loadDelay = 2;
 	var win, <alivePlugs, <blackholeBus, <aliveMenu, <idPlugDict, <canvasObj,
-	statusView, <statusStString;
+	statusView, <statusStString, <>isDirty;
 	
 	
 	*initClass
@@ -33,6 +33,7 @@ Hadron
 			
 			alivePlugs = List.new;
 			idPlugDict = Dictionary.new;
+			isDirty = false;
 			
 			canvasObj = HadronCanvas.new(this);
 			
@@ -66,10 +67,10 @@ Hadron
 			.action_
 			({
 				var tempWin; //can be modal but meh. does SwingOSC have it?
-				tempWin = Window("Are you Sure?", Rect(400, 400, 190, 70), resizable: false);
-				StaticText(tempWin, Rect(0, 10, 190, 20)).string_("Are you Sure?").align_(\center);
-				Button(tempWin, Rect(10, 30, 80, 20)).states_([["Ok"]]).action_({ tempWin.close; this.graceExit; });
-				Button(tempWin, Rect(100, 30, 80, 20)).states_([["Cancel"]]).action_({ tempWin.close; });
+				tempWin = Window("Are you sure?", Rect(400, 400, 190, 100), resizable: false);
+				StaticText(tempWin, Rect(0, 10, 190, 20)).string_("Are you sure?").align_(\center);
+				Button(tempWin, Rect(10, 50, 80, 20)).states_([["Ok"]]).action_({ tempWin.close; this.graceExit; });
+				Button(tempWin, Rect(100, 50, 80, 20)).states_([["Cancel"]]).action_({ tempWin.close; });
 			
 				tempWin.front;
 			});
@@ -105,7 +106,29 @@ Hadron
 	
 	prShowLoad
 	{
-		HadronStateLoad(this).showLoad;
+	
+		var tempWin; //can be modal but meh. does SwingOSC have it?
+		if(isDirty,
+		{
+			tempWin = Window("Are you sure?", Rect(400, 400, 190, 100), resizable: false);
+			StaticText(tempWin, Rect(0, 10, 190, 20)).string_("Current project will be closed,").align_(\center);
+			StaticText(tempWin, Rect(0, 30, 190, 20)).string_("Are you sure?").align_(\center);
+			Button(tempWin, Rect(10, 60, 80, 20)).states_([["Ok"]])
+			.action_
+			({ 
+				tempWin.close;
+				HadronStateLoad(this).showLoad;
+				isDirty = false;
+			});
+			Button(tempWin, Rect(100, 60, 80, 20)).states_([["Cancel"]]).action_({ tempWin.close; });
+	
+			tempWin.front;
+		},
+		{
+			HadronStateLoad(this).showLoad;
+			//isDirty = false; //handled inside HadronStateLoad
+		});
+		
 	}
 	
 	prGiveUniqueId
@@ -125,6 +148,7 @@ Hadron
 	{|argPlug, argIdent, argUniqueID, extraArgs, argCanvasXY|
 	
 		var tempHolder = argPlug.new(this, argIdent, argUniqueID, extraArgs, argCanvasXY);
+		isDirty = true;
 		alivePlugs.add(tempHolder);
 		idPlugDict.put(tempHolder.uniqueID, tempHolder);
 		this.prActiveMenuUpdate;

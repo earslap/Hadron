@@ -80,6 +80,7 @@ HadronCanvasItem
 		.mouseDownAction_
 		({|...args|
 		
+			parentPlugin.parentApp.isDirty = true;
 			//swingosc has different mouse button and keymod bindings
 			if(GUI.id == \swing, 
 			{ 
@@ -137,6 +138,7 @@ HadronCanvasItem
 		({|...args|
 			
 			var delta = (args[1]@args[2]) - oldMouseXY;
+			parentPlugin.parentApp.isDirty = true;
 			isOnMouseMove = true;
 			//args.postln;
 			parentCanvas.selectedItems.do(_.moveBlob(delta));
@@ -147,6 +149,7 @@ HadronCanvasItem
 		.keyDownAction_
 		({|view, char, modifiers, unicode, keycode|
 			
+			parentPlugin.parentApp.isDirty = true;
 			parentCanvas.handleKeys(view, char, modifiers, unicode, keycode);
 		});
 	}

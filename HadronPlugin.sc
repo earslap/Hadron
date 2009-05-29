@@ -80,6 +80,7 @@ HadronPlugin
 		oldWinBounds = outerWindow.bounds;
 		outerWindow.bounds = Rect(0, 0, 0, 0);
 		isHidden = true;
+		parentApp.isDirty = true;
 		if(GUI.id == \swing, { outerWindow.visible_(false); });
 	}
 	
@@ -87,6 +88,7 @@ HadronPlugin
 	{
 		if(isHidden, { outerWindow.bounds = oldWinBounds; isHidden = false; });
 		if(GUI.id == \swing, { outerWindow.visible_(true); });
+		parentApp.isDirty = true;
 		outerWindow.front;
 	}
 	
@@ -208,6 +210,7 @@ HadronPlugin
 	
 		var tempPlugin;
 		//[argTargetPlugin, argTargetBusNo, argMyBusNo].postln;
+		parentApp.isDirty = true;
 		//if "Disconnected" is selected
 		if(argTargetPlugin == nil,
 		{
@@ -298,6 +301,7 @@ HadronPlugin
 	selfDestruct
 	{
 		parentApp.alivePlugs.do(_.notifyPlugKill(this));
+		parentApp.isDirty = true;
 		this.cleanUp;
 		group.free;
 		

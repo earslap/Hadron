@@ -159,7 +159,8 @@ HadronCanvas
 		
 		//Hacky hiding after the inner view is created, or inner view bounds get messed up in SwingOSC.
 		cWin.bounds_(Rect(0, 0, 0, 0)); //hidden by default.
-		cWin.front;		
+		//cWin.front;
+		if(GUI.kit == \swing, { cWin.visible_(false); });		
 	}
 	
 	hideWin

@@ -23,6 +23,8 @@ HadronStateSave
 	{|argFile|
 		var outFile;
 		
+		parentApp.isDirty = false;
+		
 		outFile = File(argFile, "w");
 		outFile.write("?Hadron 1\n");
 		outFile.write("?StartPlugs\n");
