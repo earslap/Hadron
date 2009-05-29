@@ -80,11 +80,13 @@ HadronPlugin
 		oldWinBounds = outerWindow.bounds;
 		outerWindow.bounds = Rect(0, 0, 0, 0);
 		isHidden = true;
+		if(GUI.id == \swing, { outerWindow.visible_(false); });
 	}
 	
 	showWindow
 	{
 		if(isHidden, { outerWindow.bounds = oldWinBounds; isHidden = false; });
+		if(GUI.id == \swing, { outerWindow.visible_(true); });
 		outerWindow.front;
 	}
 	

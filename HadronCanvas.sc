@@ -169,6 +169,7 @@ HadronCanvas
 			isHidden = true;
 			oldBounds = cWin.bounds;
 			cWin.bounds = Rect(0, 0, 0, 0);
+			if(GUI.id == \swing, { cWin.visible_(false); });
 		});
 	}
 	
@@ -177,6 +178,7 @@ HadronCanvas
 		if(isHidden,
 		{
 			isHidden = false;
+			if(GUI.id == \swing, { cWin.visible_(true); });
 			cWin.bounds = oldBounds;
 			cWin.refresh;
 			cWin.front;
