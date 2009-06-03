@@ -7,7 +7,7 @@ HrFreeVerb : HadronPlugin
 		
 		var numIns = 2;
 		var numOuts = 2;
-		var bounds = Rect(100, 100, 250, 100);
+		var bounds = Rect((Window.screenBounds.width - 250).rand, rrand(100, Window.screenBounds.height), 250, 100);
 		var name = "HrFreeVerb";
 		^super.new(argParentApp, name, argIdent, argUniqueID, argExtraArgs, bounds, numIns, numOuts, argCanvasXY).init;
 	}

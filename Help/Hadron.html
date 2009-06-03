@@ -11,28 +11,29 @@ p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
 p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
 p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #0b15e8}
 p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; min-height: 12.0px}
-p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #2532e3}
+p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #3f48c3}
 p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Helvetica}
-p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #222ba2}
+p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #33398c}
 p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Helvetica; min-height: 17.0px}
 p.p9 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; min-height: 12.0px}
 p.p10 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 12.0px Helvetica}
 p.p11 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 12.0px Helvetica; min-height: 14.0px}
-p.p12 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; color: #5c3a32}
+p.p12 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; color: #433d37}
 p.p13 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco}
 span.s1 {font: 18.0px Helvetica}
 span.s2 {color: #000000}
 span.s3 {text-decoration: underline}
-span.s4 {color: #2532e3}
-span.s5 {text-decoration: underline ; color: #232fd4}
-span.s6 {color: #2830a3}
+span.s4 {color: #3f48c3}
+span.s5 {text-decoration: underline ; color: #3c44b6}
+span.s6 {color: #373d8e}
+span.s7 {font: 9.0px Monaco}
 span.Apple-tab-span {white-space:pre}
 </style>
 </head>
 <body>
 <p class="p1"><span class="s1"><b>Hadron<span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></b></span><b>a graphical environment for live performance and composition</b><span class="s1"><b><span class="Apple-tab-span">	</span></b></span></p>
 <p class="p2"><br></p>
-<p class="p3"><span class="s2">v1.2 see <a href="Hadron-Changelog.html"><span class="s3">Hadron-Changelog</span></a></span></p>
+<p class="p3"><span class="s2">v1.3 see <a href="Hadron-Changelog.html"><span class="s3">Hadron-Changelog</span></a></span></p>
 <p class="p4"><br></p>
 <p class="p1">Hadron is a graphical patching environment aimed at live performance and composition. For this cause, it employs a class based plugin system. The plugins simply have audio inputs/outputs and their own GUI windows, and the connections between different plugins are handled automatically by the system (directed by the Hadron GUI). For the patcher paradigm, Hadron uses the only thing a patching based system is good at: handling audio connections in a visual manner (the cable connections analogy). So the patcher GUI is not about handling logic, it's only about routing audio around, and the logic side of things are handled by the plugins themselves in the good way, with code. Hadron is designed to make different chunks of sound producing code come together, so it has a simple plugin interface; it was designed with the "you want your code in the system, you wrap it as a plugin" idea in mind. It is not designed for avoiding coding, or changing the way one codes with SuperCollider, it just helps bringing pieces of code together to make things happen, and provides facilities to make all easier.</p>
 <p class="p2"><br></p>
@@ -52,13 +53,14 @@ span.Apple-tab-span {white-space:pre}
 <p class="p2"><br></p>
 <p class="p1">There are two ways of adding a new plugin instance to the system. The first and most useful way is by using the canvas. When you click "Show Canvas" a blank white canvas will show up. To add a plugin to the canvas, right click on the canvas, and write the plugin name to the appearing text field. The plugins included in the distro is:</p>
 <p class="p2"><br></p>
-<p class="p3"><span class="s3"><a href="../plugins/Help/HrADC.html">HrADC</a></span></p>
-<p class="p3"><span class="s3"><a href="../plugins/Help/HrDAC.html">HrDAC</a></span></p>
-<p class="p3"><span class="s3"><a href="../plugins/Help/HrFreeVerb.html">HrFreeVerb</a></span></p>
-<p class="p3"><span class="s3"><a href="../plugins/Help/HrStereoMixer.html">HrStereoMixer</a></span></p>
-<p class="p3"><span class="s3"><a href="../plugins/Help/HrStereoSplitter.html">HrStereoSplitter</a></span></p>
-<p class="p3"><span class="s3"><a href="../plugins/Help/HrSimpleModulator.html">HrSimpleModulator</a></span></p>
-<p class="p3"><span class="s3"><a href="../plugins/Help/HrDIYSynth.html">HrDIYSynth</a></span></p>
+<p class="p3"><span class="s3"><a href="../hrplugins/Help/HrADC.html">HrADC</a></span></p>
+<p class="p3"><span class="s3"><a href="../hrplugins/Help/HrDAC.html">HrDAC</a></span></p>
+<p class="p3"><span class="s3"><a href="../hrplugins/Help/HrFreeVerb.html">HrFreeVerb</a></span></p>
+<p class="p3"><span class="s3"><a href="../hrplugins/Help/HrStereoMixer.html">HrStereoMixer</a></span></p>
+<p class="p3"><span class="s3"><a href="../hrplugins/Help/HrStereoSplitter.html">HrStereoSplitter</a></span></p>
+<p class="p3"><span class="s3"><a href="../hrplugins/Help/HrSimpleModulator.html">HrSimpleModulator</a></span></p>
+<p class="p3"><span class="s3"><a href="../hrplugins/Help/HrDIYSynth.html">HrDIYSynth</a></span></p>
+<p class="p3"><span class="s3"><a href="../hrplugins/Help/HrWrapSynth.html">HrWrapSynth</a></span></p>
 <p class="p2"><br></p>
 <p class="p1">You may want to check the help files of each to find out what they do.</p>
 <p class="p2"><br></p>
@@ -69,6 +71,38 @@ span.Apple-tab-span {white-space:pre}
 <p class="p1">This will crete an instance on canvas with 16 inputs and 2 outputs, and a GUI for the created plugin. You can hide the GUI by pressing "Hide". To see it again, select it from the menu from the main Hadron window.</p>
 <p class="p2"><br></p>
 <p class="p1">The other way of adding plugins is using the "New Inst." button. Pretty straightforward; select the plugin from the menu, enter ident name (optional, and you don't need parenthesis here), enter extra args (if your plugin needs or supports them) and click "Ok". The instance will be added, and you can see it on canvas (at point 100x100).</p>
+<p class="p8"><br></p>
+<p class="p6"><b>The Hadron GUI</b></p>
+<p class="p8"><br></p>
+<p class="p1">The New Inst. button opens a new window where you can initialize new plugin instances. "Ident" is the name you give to the instance to help you discriminate that one from others (and is optional), and "Extra args." is the space separated arguments you supply for the plugins (if they use any).</p>
+<p class="p2"><br></p>
+<p class="p1">The PopUpMenu you see on the main Hadron GUI is the list of alive and running plugins. Click on one to bring its window to front (unhides if necessary).</p>
+<p class="p2"><br></p>
+<p class="p1">Save saves your project, and Load loads a project from file.</p>
+<p class="p2"><br></p>
+<p class="p1">The "Collide" button sends a message to all alive plugins (runs their "collide" method), if they make use of it.</p>
+<p class="p2"><br></p>
+<p class="p1">The Exit button quits the application.</p>
+<p class="p2"><br></p>
+<p class="p1">You can show and hide the canvas by using the "Show/Hide Canvas" button.</p>
+<p class="p2"><br></p>
+<p class="p1">"?" button shows this help file.</p>
+<p class="p8"><br></p>
+<p class="p6"><b>Keyboard Shortcuts / Commands</b></p>
+<p class="p8"><br></p>
+<p class="p1">There are various keyboard triggers that Hadron interprets.</p>
+<p class="p2"><br></p>
+<p class="p1">* When working on the canvas, the "h" key hides the canvas.</p>
+<p class="p2"><br></p>
+<p class="p1">* When the canvas view is focused, pressing "o" orders the nodes belonging to plugin instances on the server, with respect to their vertical placement / ordering on the canvas.</p>
+<p class="p2"><br></p>
+<p class="p1">* When working on the canvas selecting one or two plugins and pressing "c" brings up the connection manager where you can enter comma separated output / input pairs to issue connections. The most likely connection you'd want to make will be preset in the manager textbox.</p>
+<p class="p2"><br></p>
+<p class="p1">* On the canvas, "Shift+d" combination duplicates the selected plugins.</p>
+<p class="p2"><br></p>
+<p class="p1">* When a plugin GUI is on focus, pressing "Shifth + h" will open its help file.</p>
+<p class="p2"><br></p>
+<p class="p1">* When the canvas view is on focus, pressing "q" will execute "Server.default.queryAllNodes".</p>
 <p class="p8"><br></p>
 <p class="p6"><b>Working on the Canvas</b></p>
 <p class="p8"><br></p>
@@ -118,11 +152,7 @@ span.Apple-tab-span {white-space:pre}
 <p class="p9"><br></p>
 <p class="p10"><b><span class="Apple-tab-span">	</span>plugins</b></p>
 <p class="p11"><b><span class="Apple-tab-span">	</span></b></p>
-<p class="p10"><b><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></b>A List. Includes the plugins Hadron can use. If you want your own plugin to be recognized, you should add it to this list.</p>
-<p class="p11"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
-<p class="p12"><span class="s2"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>// adding a custom plugin class</p>
-<p class="p13"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s6">Hadron</span>.plugins.add(HrMyPlugin);</p>
-<p class="p9"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p10"><b><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></b>A List. Includes only the default plugins Hadron can use.<span class="s7"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span></p>
 <p class="p9"><br></p>
 <p class="p9"><br></p>
 <p class="p10"><b><span class="Apple-tab-span">	</span>loadDelay</b></p>

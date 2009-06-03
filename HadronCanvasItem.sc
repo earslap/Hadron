@@ -1,7 +1,7 @@
 HadronCanvasItem
 {
 	var <parentCanvas, <parentPlugin, <objView, <inPortBlobs, <outPortBlobs,
-	mouseXY, oldMouseXY, conMan, isSelected, isOnMouseMove;
+	mouseXY, oldMouseXY, conMan, isSelected, isOnMouseMove, justSelected;
 	
 	*new
 	{|argParentCanvas, argParentPlugin, argX, argY|
@@ -21,6 +21,7 @@ HadronCanvasItem
 		oldMouseXY = argX@argY;
 		isSelected = false;
 		isOnMouseMove = false;
+		justSelected = false;
 		
 		numMaxPorts = max(argParentPlugin.inBusses.size, argParentPlugin.outBusses.size);
 		
@@ -81,11 +82,13 @@ HadronCanvasItem
 		({|...args|
 		
 			parentPlugin.parentApp.isDirty = true;
+			//args.postln;
 			//swingosc has different mouse button and keymod bindings
 			if(GUI.id == \swing, 
 			{ 
 				args[4].switch( 1, { args[4] = 0; }, 3, { args[4] = 1; }); //button bindings
-				args[3].switch( 0, { args[3] = 256; }, 131072, { args[3] = 131330; }); //keyboard bindings
+				args[3].switch( 0, { args[3] = 256; }, 131072, { args[3] = 131330; }, 524288, { args[3] = 524576; }); //keyboard bindings
+				
 			});
 			
 			args[5].switch
@@ -109,7 +112,7 @@ HadronCanvasItem
 								parentCanvas.isSelectingTarget = true;
 								parentCanvas.currentSource = parentPlugin;
 								objView.background = Color.green;
-								parentPlugin.parentApp.displayStatus("Source set, Shift+click on target plugin.");
+								parentPlugin.parentApp.displayStatus("Source set, Shift+click on target plugin.", 1);
 							});
 						},
 						256, //no modifier keys
@@ -128,7 +131,11 @@ HadronCanvasItem
 									
 								});
 							}.fork(AppClock);
-							parentPlugin.parentApp.displayStatus(parentPlugin.helpString);
+							parentPlugin.parentApp.displayStatus(parentPlugin.helpString, 0);
+						},
+						524576, //if alt pressed
+						{
+							this.amSelected;
 						}
 					); 
 				}
@@ -138,8 +145,16 @@ HadronCanvasItem
 		({|...args|
 			
 			var delta = (args[1]@args[2]) - oldMouseXY;
+			
 			parentPlugin.parentApp.isDirty = true;
 			isOnMouseMove = true;
+			if(justSelected,
+			{
+				parentCanvas.selectedItems.remove(this); //get yourself out of the way
+				parentCanvas.selectedItems.size.do({ parentCanvas.selectedItems[0].amUnselected; });
+				parentCanvas.selectedItems.add(this);
+				justSelected = false;
+			});
 			//args.postln;
 			parentCanvas.selectedItems.do(_.moveBlob(delta));
 			oldMouseXY = args[1]@args[2];
@@ -177,6 +192,8 @@ HadronCanvasItem
 		if(isSelected.not,
 		{
 			isSelected = true;
+			justSelected = true;
+			{ 0.1.wait; justSelected = false; }.fork(AppClock);
 			objView.background = Color.gray(0.3);
 			parentCanvas.selectedItems.add(this);
 		});
@@ -187,6 +204,7 @@ HadronCanvasItem
 		if(isSelected,
 		{
 			isSelected = false;
+			justSelected = false;
 			objView.background = Color.gray;
 			parentCanvas.selectedItems.remove(this);
 		});

@@ -6,6 +6,19 @@ HadronPlugin
 	<>saveGets, <>saveSets, <extraArgs, <boundCanvasItem, <helpString,
 	<modulatables;
 	
+	classvar <>plugins; //holder for external plugins
+	
+	*initClass
+	{
+		this.plugins = List.new;		
+	}
+	
+	*addHadronPlugin
+	{
+		Class.initClassTree(HadronPlugin);
+		HadronPlugin.plugins.add(this);
+	}
+	
 	*new
 	{|argParentApp, argName, argIdent, argUniqueID, argExtraArgs, argBounds, argNumIns, argNumOuts, argCanvasXY|
 		
@@ -43,15 +56,37 @@ HadronPlugin
 		saveGets = nil; //functions in this list will be evaulated and return value will be saved with patch
 		saveSets = nil; //saved values will be injected back into instance with these functions (argument will be the saved value)
 				
-		oldWinBounds = Rect(argBounds.left, argBounds.top, argBounds.width, argBounds.height + 50);
+		oldWinBounds = Rect(argBounds.left, argBounds.top, argBounds.width, argBounds.height + 40);
 		outerWindow = Window(argName + ident, oldWinBounds, resizable: false)
 		.userCanClose_(false);
 		
-		Button(outerWindow, Rect(oldWinBounds.width - 80, oldWinBounds.height - 40, 70, 20))
+		outerWindow.view.keyDownAction_
+		({|...args|
+		
+			//SwingOSC has different key bindings
+			
+			//args.postln;
+			if(GUI.id == \swing, 
+			{
+				args[2].switch(131072, { args[2] = 131074; }); //keyboard bindings
+			});
+
+			if((args[1] == $H) and: { args[2] == 131074 }, //if shift+h, show help
+			{
+				{ this.class.openHelpFile; }.defer;
+			});
+			 
+		});
+		
+		Button(outerWindow, Rect(oldWinBounds.width - 80, oldWinBounds.height - 30, 50, 20))
 		.states_([["Hide"]])
 		.action_({ this.prHideWindow; });
 		
-		Button(outerWindow, Rect(oldWinBounds.width - 160, oldWinBounds.height - 40, 70, 20))
+		Button(outerWindow, Rect(oldWinBounds.width - 25, oldWinBounds.height - 30, 15, 20))
+		.states_([["?"]])
+		.action_({ this.class.openHelpFile; });
+		
+		Button(outerWindow, Rect(oldWinBounds.width - 160, oldWinBounds.height - 30, 70, 20))
 		.states_([["Kill"]])
 		.action_
 		({
@@ -65,7 +100,7 @@ HadronPlugin
 			tempWin.front;
 		});
 		
-		Button(outerWindow, Rect(10, oldWinBounds.height - 40, 70, 20))
+		Button(outerWindow, Rect(10, oldWinBounds.height - 30, 70, 20))
 		.states_([["In/Outs"]])
 		.action_({ this.prShowConnections; });
 		
@@ -378,6 +413,11 @@ HadronPlugin
 		
 		saveGets.do({|item| temp.add(item.value) });
 		^temp;
+	}
+	
+	collide
+	{
+		//executed when the collide button is pressed from the main gui. override if necessary.
 	}
 	
 	injectSaveValues

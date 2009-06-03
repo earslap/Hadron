@@ -95,7 +95,7 @@ HadronStateLoad
 				parentApp.alivePlugs.do(_.wakeFromLoad);
 				parentApp.canvasObj.drawCables;
 				parentApp.isDirty = false;
-				"State loaded...".postln;
+				parentApp.displayStatus("State loaded!", 1);
 			});
 			
 			

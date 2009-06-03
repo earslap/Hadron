@@ -39,7 +39,7 @@ HadronStateSave
 				++ 31.asAscii 
 				++ item.uniqueID.asString 
 				++ 31.asAscii
-				++ item.extraArgs.asString 
+				++ item.extraArgs.collect({|item| item.class.switch(String, { "\""++item++"\""; }, Symbol, { "\\"++item; }, { item; }); }).asString
 				++ 31.asAscii
 				++ (item.boundCanvasItem.objView.bounds.left@item.boundCanvasItem.objView.bounds.top).asString
 				++ 31.asAscii
@@ -116,6 +116,8 @@ HadronStateSave
 		outFile.write("?EndSave\n");
 		
 		outFile.close;
+		
+		parentApp.displayStatus("State saved!", 1);
 	}
 	
 }

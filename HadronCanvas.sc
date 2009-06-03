@@ -30,6 +30,8 @@ HadronCanvas
 		.userCanClose_(false)
 		.acceptsMouseOver_(true);
 		
+		cWin.view.keyDownAction_({|...args| this.handleKeys(*args); });
+		
 		
 		
 		cView = UserView(cWin, cWin.view.bounds)
@@ -80,9 +82,11 @@ HadronCanvas
 			(
 				1,
 				{
-					parentApp.displayStatus("Enter plugin name, (optional) followed by ID name in paranthesis.");
+					parentApp.displayStatus("Enter plugin name, (optional) followed by ID name in paranthesis.", 0);
+					cWin.front;
 					tempField = TextField(cWin, Rect(x, y, 200, 20))
 					.focus(true)
+					.keyDownAction_({ 1; }) //do not bubble up to the parent view.
 					.action_
 					{|field|
 					
@@ -103,7 +107,7 @@ HadronCanvas
 								});
 							};
 							
-							if(Hadron.plugins.includes(tempPlugStr[0].interpret),
+							if((Hadron.plugins ++ HadronPlugin.plugins).includes(tempPlugStr[0].interpret),
 							{
 								if(tempPlugStr.size == 1,
 								{
@@ -115,10 +119,10 @@ HadronCanvas
 								
 								});
 								tempField.remove;
-								parentApp.displayStatus("Right click on canvas to add plugins. Shift+click on a plugin to make connections");
+								parentApp.displayStatus("Right click on canvas to add plugins. Shift+click on a plugin to make connections", 0);
 							},
 							{
-								parentApp.displayStatus("Plugin"+tempPlugStr[0]+"mistyped or not installed...");
+								parentApp.displayStatus("Plugin"+tempPlugStr[0]+"mistyped or not installed...", -1);
 							});
 						});
 					};
@@ -169,8 +173,11 @@ HadronCanvas
 		{
 			isHidden = true;
 			oldBounds = cWin.bounds;
+			parentApp.displayStatus("READY.", 0);
 			cWin.bounds = Rect(0, 0, 0, 0);
 			if(GUI.id == \swing, { cWin.visible_(false); });
+			parentApp.canvasButton.value_(0);
+			parentApp.win.front;
 		});
 	}
 	
@@ -181,6 +188,8 @@ HadronCanvas
 			isHidden = false;
 			if(GUI.id == \swing, { cWin.visible_(true); });
 			cWin.bounds = oldBounds;
+			parentApp.canvasButton.value_(1);
+			parentApp.displayStatus("Right click on canvas to add plugins. Shift+click on a plugin to make connections", 0);
 			cWin.refresh;
 			cWin.front;
 		});
@@ -224,13 +233,57 @@ HadronCanvas
 		var schedOldText;
 	
 		//[view, char, modifiers, unicode, keycode].postln;
+		
+		//SwingOSC has different keyboard codes
+		if(GUI.id == \swing, 
+		{
+			modifiers.switch( 0, { modifiers = 256; }, 131072, { modifiers = 131330; });
+		});
+		
+		if((char == $D) and: { modifiers == 131330 }, //if shift+d, duplicate
+		{
+			var tempNewIdent, cleanIdent, currentIdents, appendIndex, duped = List.new;
+			
+			selectedItems.do
+			({|item|
+				
+				appendIndex = 1;
+				currentIdents = parentApp.alivePlugs.collect({|aPlug| [aPlug.class, aPlug.ident.asSymbol]; });
+				cleanIdent = item.parentPlugin.ident.asString.copy;
+				if(cleanIdent.find("_copy").notNil, { cleanIdent = cleanIdent[..(cleanIdent.find("_copy") - 1)]});
+				
+				tempNewIdent = (cleanIdent ++ "_copy" ++ appendIndex).asSymbol;
+				
+				while({ currentIdents.detectIndex({|cItem| cItem == [item.parentPlugin.class, tempNewIdent]}).notNil; }, 
+				{
+					appendIndex = appendIndex + 1;
+					tempNewIdent = (cleanIdent ++ "_copy" ++ appendIndex).asSymbol;
+				}); 
+				duped.add
+				(
+					parentApp.prAddPlugin
+					(
+						item.parentPlugin.class, 
+						tempNewIdent, 
+						nil, 
+						item.parentPlugin.extraArgs, 
+						(item.objView.bounds.moveBy(30, 30).left@item.objView.bounds.moveBy(30, 30).top)
+					)
+				);
+				
+			});
+			
+			selectedItems.size.do({|cnt| selectedItems[0].amUnselected; }); //amUnselected method deletes items
+			duped.do({|item| item.boundCanvasItem.amSelected});
+			^this;
+		});
 		if(unicode == 127 and: { this.selectedItems.size > 0 }, //if delete pressed, and there are selected items...
 		{
 			this.deleteSelected;
 			^this;
 		});	
 		
-		if(char == $c and: { selectedItems.size == 2 },
+		if(char == $c and: { selectedItems.size == 2 } and: { modifiers == 256 },
 		{
 			coord1 = selectedItems[0].objView.bounds.top;
 			coord2 = selectedItems[1].objView.bounds.top;
@@ -240,16 +293,24 @@ HadronCanvas
 			^this;
 		});
 		
+		if(char == $c and: { selectedItems.size == 1 } and: { modifiers == 256 },
+		{	
+			HadronConManager(selectedItems[0].parentPlugin, selectedItems[0].parentPlugin);
+			^this;
+		});
+		
 		if(char == $o, 
 		{ 
 			parentApp.reorderGraph;
 			schedOldText = parentApp.statusStString.string.copy;
-			parentApp.displayStatus("Ordered nodes based on vertical alignment on canvas...");
-			AppClock.sched(4, { parentApp.displayStatus(schedOldText); nil; });
+			parentApp.displayStatus("Ordered nodes based on vertical alignment on canvas...", 1);
+			AppClock.sched(4, { parentApp.displayStatus(schedOldText, 0); nil; });
 			^this; 
 		});
 		
 		if(char == $q, { Server.default.queryAllNodes; });
+		
+		if(char == $h, { this.hideWin; });
 	}
 	
 	deleteSelected

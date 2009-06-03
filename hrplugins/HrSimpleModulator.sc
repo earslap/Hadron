@@ -8,7 +8,7 @@ HrSimpleModulator : HadronPlugin
 		
 		var numIns = 1;
 		var numOuts = 0;
-		var bounds = Rect((Window.screenBounds.width - 350).rand, (Window.screenBounds.height - 50).rand, 450, 115);
+		var bounds = Rect((Window.screenBounds.width - 350).rand, rand(115, Window.screenBounds.height), 450, 115);
 		var name = "HrSimpleModulator";
 		^super.new(argParentApp, name, argIdent, argUniqueID, argExtraArgs, bounds, numIns, numOuts, argCanvasXY).init;
 	}

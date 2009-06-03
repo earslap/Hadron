@@ -7,7 +7,7 @@ HrDIYSynth : HadronPlugin
 		
 		var numIns = 2;
 		var numOuts = 2;
-		var bounds = Rect((Window.screenBounds.width - 250).rand, (Window.screenBounds.height - 90).rand, 450, 400);
+		var bounds = Rect((Window.screenBounds.width - 450).rand, rrand(400, Window.screenBounds.height).rand, 450, 400);
 		var name = "HrDIYSynth";
 		^super.new(argParentApp, name, argIdent, argUniqueID, argExtraArgs, bounds, numIns, numOuts, argCanvasXY).init;
 	}

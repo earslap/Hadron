@@ -16,11 +16,11 @@ p.p6 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco
 span.s1 {font: 18.0px Helvetica}
 span.s2 {color: #000000}
 span.s3 {text-decoration: underline}
-span.s4 {color: #181fb7}
-span.s5 {color: #0c16f9}
-span.s6 {color: #1f28a6}
-span.s7 {color: #5c6a29}
-span.s8 {color: #0000ff}
+span.s4 {color: #1c23b3}
+span.s5 {color: #1320f3}
+span.s6 {color: #222ba2}
+span.s7 {color: #5f692d}
+span.s8 {color: #0c16f9}
 span.Apple-tab-span {white-space:pre}
 </style>
 </head>
@@ -75,6 +75,8 @@ span.Apple-tab-span {white-space:pre}
 <p class="p1"><b>notifyPlugAdd(argPlugin): </b>This is the same with notifyPlugKill, but called only when a new plugin instance is introduced to the system. the new plugin instance is sent as an argument to this method. To see an example of how this might be necessary, check the sources of the supplied <a href="../plugins/Help/HrSimpleModulator.html"><span class="s5">HrSimpleModulator</span></a> plugin.</p>
 <p class="p2"><br></p>
 <p class="p1"><b>wakeFromLoad: </b>If your plugins saved state in the <a href="Hadron.html"><span class="s5">Hadron</span></a> environment is dependent on all other plugins being alive, you should do necessary operations in this method. This method is called when all other plugins are loaded from a saved file, and is in the active state. To see an example of how this might be necessary, check the sources of the supplied <a href="../plugins/Help/HrSimpleModulator.html"><span class="s5">HrSimpleModulator</span></a> plugin.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>collide: </b>When the user presses the "Collide" button from the main Hadron GUI, this method in all alive plugins is called.</p>
 <p class="p2"><br></p>
 <p class="p1">To find out more about plugin development by inheriting this class see: <a href="Writing-Hadron-Plugins.html"><span class="s8">Writing-Hadron-Plugins</span></a></p>
 </body>

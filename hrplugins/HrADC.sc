@@ -7,7 +7,7 @@ HrADC : HadronPlugin
 		
 		var numIns = 0;
 		var numOuts = 2;
-		var bounds = Rect((Window.screenBounds.width - 350).rand, (Window.screenBounds.height - 50).rand, 350, 50);
+		var bounds = Rect((Window.screenBounds.width - 350).rand, rrand(50, Window.screenBounds.height), 350, 50);
 		var name = "HrADC";
 		^super.new(argParentApp, name, argIdent, argUniqueID, argExtraArgs, bounds, numIns, numOuts, argCanvasXY).init;
 	}

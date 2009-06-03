@@ -11,11 +11,32 @@ p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px Helvetica}
 p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
 p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
 span.s1 {text-decoration: underline}
+span.s2 {color: #1a27ed}
 </style>
 </head>
 <body>
 <p class="p1"><b>Hadron Changelog</b></p>
 <p class="p2"><br></p>
+<p class="p3"><b>v1.3</b></p>
+<p class="p3"><span class="s1">added features:</span></p>
+<p class="p3">* New plugin <a href="../hrplugins/Help/HrWrapSynth.html"><span class="s2">HrWrapSynth</span></a> which wraps SynthDefs and integrates them to te Hadron system by auto-generating their GUI, and handling in / out connections.</p>
+<p class="p3">* General usability additions</p>
+<p class="p3">* Connection manager is intelligent now. The text box for typing in / out pairs now show the most likely connection prewritten for less typing.</p>
+<p class="p3">* "Collide" button added to main gui, when pressed, collide method of all alive plugin instances are executed.<span class="Apple-converted-space"> </span></p>
+<p class="p3">* "Shift + d" duplicates selected items now.</p>
+<p class="p3">* When the canvas is in focus, pressing "h" hides the canvas now.</p>
+<p class="p3">* When a plugin window is in focus, "Shift + h" opens the Help for the plugin.</p>
+<p class="p3">* The status bar provides visual feedback with colors now.</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s1">fixed bugs:</span></p>
+<p class="p3">* Fixed a bug with the save mechanism where plugins with String and Symbol arguments were being saved incorrectly.</p>
+<p class="p3">* Various GUI tweaks and fixes</p>
+<p class="p3">* Fixed the bug where keys that were being typed in the text box on canvas were being interpreted by the canvas keydown handler. Now they don't bubble up to the parent view.</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s1">other:</span></p>
+<p class="p3">* A little addition to the plugin interface (*initClass addition, see <a href="Writing-Hadron-Plugins.html"><span class="s2">Writing-Hadron-Plugins</span></a> help)</p>
+<p class="p2"><br></p>
+<p class="p3">-----------</p>
 <p class="p3"><b>v1.2 (May 29, 2009)</b></p>
 <p class="p3"><span class="s1">added features:</span></p>
 <p class="p3">* You can load a new project without having to exit and relaunch Hadron now.</p>
