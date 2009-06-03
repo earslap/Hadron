@@ -231,6 +231,7 @@ HadronCanvas
 	
 		var coord1, coord2, topItem;
 		var schedOldText;
+		var tempNewIdent, cleanIdent, currentIdents, appendIndex, duped; //for duplicate operation
 	
 		//[view, char, modifiers, unicode, keycode].postln;
 		
@@ -242,7 +243,7 @@ HadronCanvas
 		
 		if((char == $D) and: { modifiers == 131330 }, //if shift+d, duplicate
 		{
-			var tempNewIdent, cleanIdent, currentIdents, appendIndex, duped = List.new;
+			duped = List.new;
 			
 			selectedItems.do
 			({|item|
