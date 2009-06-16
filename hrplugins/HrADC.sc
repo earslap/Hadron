@@ -108,7 +108,9 @@ HrADC : HadronPlugin
 			{|argg| levSlider.automationData_(argg); }
 		];
 		
-		modulatables.put(\level, {|argg| levSlider.valueAction_(argg); });
+		modGets.put(\level, { levSlider.value; });
+		modSets.put(\level, {|argg| levSlider.valueAction_(argg); });
+		
 	}
 	
 	updateBusConnections

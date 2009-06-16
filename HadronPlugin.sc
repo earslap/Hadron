@@ -4,7 +4,7 @@ HadronPlugin
 	<outerWindow, window, <>oldWinBounds, <>isHidden, <name, <ident,
 	<>inConnections, <>outConnections, <dummyInBusses, <conWindow,
 	<>saveGets, <>saveSets, <extraArgs, <boundCanvasItem, <helpString,
-	<modulatables;
+	<modSets, <modGets;
 	
 	classvar <>plugins; //holder for external plugins
 	
@@ -29,7 +29,9 @@ HadronPlugin
 	{|argParentApp, argName, argIdent, argUniqueID, argExtraArgs, argBounds, argNumIns, argNumOuts, argCanvasXY|
 	
 		extraArgs = argExtraArgs;
-		modulatables = Dictionary.new;
+		modGets = Dictionary.new;
+		modSets = Dictionary.new;
+		
 		helpString = "No help available for this plugin.";
 		//every connecting plugin gets inputs from the plugin it connects.
 		inBusses = Array.fill(argNumIns, { Bus.audio(Server.default, 1); });

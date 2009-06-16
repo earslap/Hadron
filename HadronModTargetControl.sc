@@ -29,7 +29,7 @@ HadronModTargetControl
 			{
 				currentSelPlugin = parentApp.alivePlugs[menu.value - 1];
 				currentSelParam = nil;
-				targetParamMenu.items = ["Nothing"] ++ currentSelPlugin.modulatables.keys.asArray;
+				targetParamMenu.items = ["Nothing"] ++ currentSelPlugin.modSets.keys.asArray;
 				targetParamMenu.value = 0;
 			});
 		});
@@ -96,7 +96,7 @@ HadronModTargetControl
 	
 		if((currentSelPlugin != nil) and: { currentSelParam != nil },
 		{
-			currentSelPlugin.modulatables.at(currentSelParam.asSymbol).value(argVal);
+			currentSelPlugin.modSets.at(currentSelParam.asSymbol).value(argVal);
 		});
 	}
 	

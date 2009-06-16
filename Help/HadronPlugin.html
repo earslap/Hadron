@@ -13,14 +13,17 @@ p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; min-height: 12.0px}
 p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #0b15e8}
 p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Helvetica}
 p.p6 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco}
+p.p7 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; color: #000000}
 span.s1 {font: 18.0px Helvetica}
 span.s2 {color: #000000}
 span.s3 {text-decoration: underline}
-span.s4 {color: #1c23b3}
-span.s5 {color: #1320f3}
-span.s6 {color: #222ba2}
-span.s7 {color: #5f692d}
-span.s8 {color: #0c16f9}
+span.s4 {color: #1f27af}
+span.s5 {color: #1a27ed}
+span.s6 {color: #252e9e}
+span.s7 {color: #616830}
+span.s8 {color: #399a14}
+span.s9 {color: #ce1b1c}
+span.s10 {color: #1320f3}
 span.Apple-tab-span {white-space:pre}
 </style>
 </head>
@@ -58,10 +61,14 @@ span.Apple-tab-span {white-space:pre}
 <p class="p2"><br></p>
 <p class="p6">saveSets = [{<span class="s6">|argVal|</span> myNumBox.valueAction_(argVal);}, {<span class="s6">|argVal|</span> mySlider.valueAction_(argVal);} ];</p>
 <p class="p2"><br></p>
-<p class="p1"><b>modulatables: </b>This is an empty <a href="SC://Dictionary"><span class="s5">Dictionary</span></a>. If you want any of the controls / values of your plugin to be modulatable, you should fill this dictionary with key - value pairs where keys will be the descriptive names you give to the modulatable parameters, and the values will be functions (that will be passed values by the system) which should get the argument and do the relevant action for modulation. So if we have a level slider in our GUI and want it to be modulatable with the help of <a href="HadronModTargetControl.html"><span class="s5">HadronModTargetControl</span></a> (see its help for more info) we might put:</p>
+<p class="p1"><b>modSets: </b>This is an empty <a href="SC://Dictionary"><span class="s5">Dictionary</span></a>. If you want any of the controls / values of your plugin to be modulatable, you should fill this dictionary with key - value pairs where keys will be the descriptive names you give to the modulatable parameters, and the values will be functions (that will be passed values by the system) which should get the argument and do the relevant action for modulation. So if we have a level slider in our GUI and want it to be modulatable with the help of <a href="HadronModTargetControl.html"><span class="s5">HadronModTargetControl</span></a> (see its help for more info) we might put:</p>
 <p class="p2"><br></p>
-<p class="p6">modulatables.put(<span class="s7">\level</span>, {<span class="s6">|argVal|</span> myLevelSlider.valueAction_(argVal); });</p>
+<p class="p6">modSets.put(<span class="s7">\level</span>, {<span class="s6">|argVal|</span> myLevelSlider.valueAction_(argVal); });</p>
 <p class="p2"><br></p>
+<p class="p1"><b>modGets: </b>This is essentially the same with modSets (a dictionary), but in the functions, you should return the value instead of setting one. So the complementary modGets for the above modSets would be:</p>
+<p class="p2"><br></p>
+<p class="p7">modGets.put(<span class="s8">\level</span>, { myLevelSlider.value; }); <span class="s9">//returns value</span></p>
+<p class="p2"><b></b><br></p>
 <p class="p1"><b>group: </b>This is a Group reserved for your synth. Your Groups and Synths should have this group in their targets. See Synth and Group help for more info.</p>
 <p class="p2"><br></p>
 <p class="p5"><b>Supplied Methods:</b></p>
@@ -78,6 +85,6 @@ span.Apple-tab-span {white-space:pre}
 <p class="p2"><br></p>
 <p class="p1"><b>collide: </b>When the user presses the "Collide" button from the main Hadron GUI, this method in all alive plugins is called.</p>
 <p class="p2"><br></p>
-<p class="p1">To find out more about plugin development by inheriting this class see: <a href="Writing-Hadron-Plugins.html"><span class="s8">Writing-Hadron-Plugins</span></a></p>
+<p class="p1">To find out more about plugin development by inheriting this class see: <a href="Writing-Hadron-Plugins.html"><span class="s10">Writing-Hadron-Plugins</span></a></p>
 </body>
 </html>

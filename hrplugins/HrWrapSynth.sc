@@ -94,7 +94,8 @@ HrWrapSynth : HadronPlugin
 			);
 			
 			//add the modulatable entry for the control
-			modulatables.put(item.asSymbol, {|argg| sliders[count].valueAction_(argg); });
+			modGets.put(item.asSymbol, { sliders[count].value; });
+			modSets.put(item.asSymbol, {|argg| sliders[count].valueAction_(argg); });
 			
 			
 		});

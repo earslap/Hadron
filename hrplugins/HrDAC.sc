@@ -67,7 +67,8 @@ HrDAC : HadronPlugin
 			{|argg| limButton.valueAction_(argg); }
 		];
 		
-		modulatables.put(\level, {|argg| levelSlider.valueAction_(argg) });
+		modGets.put(\level, { levelSlider.value; });
+		modSets.put(\level, {|argg| levelSlider.valueAction_(argg) });
 	}
 	
 	updateBusConnections

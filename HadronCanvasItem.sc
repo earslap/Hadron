@@ -1,7 +1,7 @@
 HadronCanvasItem
 {
 	var <parentCanvas, <parentPlugin, <objView, <inPortBlobs, <outPortBlobs,
-	mouseXY, oldMouseXY, conMan, isSelected, isOnMouseMove, justSelected;
+	oldMouseXY, conMan, isSelected, isOnMouseMove, justSelected;
 	
 	*new
 	{|argParentCanvas, argParentPlugin, argX, argY|
@@ -17,7 +17,7 @@ HadronCanvasItem
 		parentPlugin = argParentPlugin;
 		inPortBlobs = List.new;
 		outPortBlobs = List.new;
-		mouseXY = argX@argY;
+		//mouseXY = argX@argY;
 		oldMouseXY = argX@argY;
 		isSelected = false;
 		isOnMouseMove = false;
@@ -51,21 +51,24 @@ HadronCanvasItem
 				), 
 			20)
 		)
+		.relativeOrigin_(false)
 		.background_(Color.gray)
 		.focusColor_(Color(alpha: 0))
 		.drawFunc_
-		({
+		({|view|
+		
 			var tempString;
+			var vCoords = view.bounds.left@view.bounds.top;
 			
 			Pen.font = Font("Helvetica", 10);
 			tempString = parentPlugin.class.asString;
 			if(parentPlugin.extraArgs.notNil, { tempString = tempString + parentPlugin.extraArgs.asString; });
-			Pen.stringAtPoint(tempString, 5@3);
+			Pen.stringAtPoint(tempString, 5@3 + vCoords);
 			inPortBlobs.do
 			({|blob|
 				
 				Pen.color = Color.black;
-				Pen.addRect(blob);
+				Pen.addRect(Rect(blob.left + vCoords.x, blob.top + vCoords.y, blob.width, blob.height));
 				Pen.fill;
 			});
 			
@@ -73,11 +76,11 @@ HadronCanvasItem
 			({|blob|
 				
 				Pen.color = Color.black;
-				Pen.addRect(blob);
+				Pen.addRect(Rect(blob.left + vCoords.x, blob.top + vCoords.y, blob.width, blob.height));
 				Pen.fill;
 			});
 		})
-		.mouseOverAction_({|...args| mouseXY = oldMouseXY = args[1]@args[2]; })
+		//.mouseOverAction_({|...args| mouseXY = oldMouseXY = (args[1]@args[2]).postln; })
 		.mouseDownAction_
 		({|...args|
 		
@@ -93,6 +96,7 @@ HadronCanvasItem
 			
 			args[5].switch
 			(
+				oldMouseXY = args[1]@args[2];
 				2, //if double clicked
 				{ parentPlugin.showWindow; },
 				1, //on single click
@@ -144,8 +148,7 @@ HadronCanvasItem
 		.mouseMoveAction_
 		({|...args|
 			
-			var delta = (args[1]@args[2]) - oldMouseXY;
-			
+			var delta = args[1]@args[2] - oldMouseXY;
 			parentPlugin.parentApp.isDirty = true;
 			isOnMouseMove = true;
 			if(justSelected,
@@ -156,8 +159,8 @@ HadronCanvasItem
 				justSelected = false;
 			});
 			//args.postln;
-			parentCanvas.selectedItems.do(_.moveBlob(delta));
 			oldMouseXY = args[1]@args[2];
+			parentCanvas.selectedItems.do(_.moveBlob(delta));
 			
 			argParentCanvas.drawCables;
 		})

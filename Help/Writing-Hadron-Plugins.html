@@ -13,25 +13,27 @@ p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; min-height: 12.0px}
 p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
 p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #0b15e8}
 p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Helvetica}
-p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #222ba2}
+p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #252e9e}
 p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco}
-p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #000000}
-p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #606060}
-p.p11 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco}
-p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #131db2}
-p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #131db2; min-height: 12.0px}
-span.s1 {color: #0c16f9}
+p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #606060}
+p.p10 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco}
+p.p11 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; min-height: 12.0px}
+p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #1721ae}
+p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #1721ae; min-height: 12.0px}
+span.s1 {color: #1320f3}
 span.s2 {color: #000000}
 span.s3 {text-decoration: underline}
-span.s4 {color: #0000bf}
-span.s5 {color: #222ba2}
-span.s6 {color: #1f28a6}
-span.s7 {color: #5c6a29}
-span.s8 {color: #1b25aa}
-span.s9 {color: #606060}
-span.s10 {color: #586b25}
-span.s11 {color: #4c6d1c}
-span.s12 {color: #131db2}
+span.s4 {color: #0910ba}
+span.s5 {color: #252e9e}
+span.s6 {color: #222ba2}
+span.s7 {color: #5f692d}
+span.s8 {color: #54971e}
+span.s9 {color: #b62825}
+span.s10 {color: #1f28a6}
+span.s11 {color: #606060}
+span.s12 {color: #5c6a29}
+span.s13 {color: #536c21}
+span.s14 {color: #1721ae}
 span.Apple-tab-span {white-space:pre}
 </style>
 </head>
@@ -53,7 +55,7 @@ span.Apple-tab-span {white-space:pre}
 <p class="p8">{</p>
 <p class="p8"><span class="Apple-tab-span">	</span>*initClass</p>
 <p class="p8"><span class="Apple-tab-span">	</span>{</p>
-<p class="p9"><span class="s2"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span><span class="s4">this</span>.addHadronPlugin;</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s4">this</span>.addHadronPlugin;</p>
 <p class="p8"><span class="Apple-tab-span">	</span>}</p>
 <p class="p3"><br></p>
 <p class="p8">}</p>
@@ -72,7 +74,7 @@ span.Apple-tab-span {white-space:pre}
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s5">var</span> numIns = 2;</p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s5">var</span> numOuts = 2;</p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s5">var</span> bounds = <span class="s5">Rect</span>(200, 200, 350, 50);</p>
-<p class="p10"><span class="s2"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span><span class="s5">var</span><span class="s2"> name = </span>"HrDoNothing"<span class="s2">;</span></p>
+<p class="p9"><span class="s2"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span><span class="s5">var</span><span class="s2"> name = </span>"HrDoNothing"<span class="s2">;</span></p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>^<span class="s5">super</span>.new(argParentApp, name, argIdent, argUniqueID, argExtraArgs, bounds, numIns, numOuts, argCanvasXY).init;</p>
 <p class="p8">}</p>
 <p class="p2"><br></p>
@@ -98,15 +100,19 @@ span.Apple-tab-span {white-space:pre}
 <p class="p2"><br></p>
 <p class="p4"><b>saveGets: </b>An uninitialized <a href="SC://Array"><span class="s1">Array</span></a> you should fill with functions that will return the values you need to save when the user saves the state of his / her patch, when evaluated. For example, if you need to save the values of a <a href="SC://NumberBox"><span class="s1">NumberBox</span></a> and a <a href="SC://Slider"><span class="s1">Slider</span></a>, you need to say:</p>
 <p class="p2"><br></p>
-<p class="p11">saveGets = [ { myNumBox.value; }, { mySlider.value; } ];</p>
+<p class="p10">saveGets = [ { myNumBox.value; }, { mySlider.value; } ];</p>
 <p class="p2"><br></p>
 <p class="p4"><b>saveSets: </b>An uninitialized <a href="SC://Array"><span class="s1">Array</span></a> you should fill with functions that will set the values of the parameters saved from obtaining the values of functions from the saveGets variable. The functions will be passed the saved value. The ordering must be same with the functions declared in the saveGets variable. So the companion for the above saveGets variable will be:</p>
 <p class="p2"><br></p>
-<p class="p11">saveSets = [{<span class="s6">|argVal|</span> myNumBox.valueAction_(argVal);}, {<span class="s6">|argVal|</span> mySlider.valueAction_(argVal);} ];</p>
+<p class="p10">saveSets = [{<span class="s6">|argVal|</span> myNumBox.valueAction_(argVal);}, {<span class="s6">|argVal|</span> mySlider.valueAction_(argVal);} ];</p>
 <p class="p2"><br></p>
-<p class="p4"><b>modulatables: </b>This is an empty <a href="SC://Dictionary"><span class="s1">Dictionary</span></a>. If you want any of the controls / values of your plugin to be modulatable, you should fill this dictionary with key - value pairs where keys will be the descriptive names you give to the modulatable parameter, and the values will be functions that will be passed values which should get the argument and do the relevant action for modulation. So if we have a level slider in our GUI and want it to be modulatable with the help of <a href="HadronModTargetControl.html"><span class="s1">HadronModTargetControl</span></a> (see its help for more info) we might put:</p>
+<p class="p4"><b>modSets: </b>This is an empty <a href="SC://Dictionary"><span class="s1">Dictionary</span></a>. If you want any of the controls / values of your plugin to be modulatable, you should fill this dictionary with key - value pairs where keys will be the descriptive names you give to the modulatable parameter, and the values will be functions that will be passed values which should get the argument and do the relevant action for modulation. So if we have a level slider in our GUI and want it to be modulatable with the help of <a href="HadronModTargetControl.html"><span class="s1">HadronModTargetControl</span></a> (see its help for more info) we might put:</p>
 <p class="p2"><br></p>
-<p class="p11">modulatables.put(<span class="s7">\level</span>, {<span class="s6">|argVal|</span> myLevelSlider.valueAction_(argVal); });</p>
+<p class="p10">modSets.put(<span class="s7">\level</span>, {<span class="s6">|argVal|</span> myLevelSlider.valueAction_(argVal); });</p>
+<p class="p11"><br></p>
+<p class="p4"><b>modGets: </b>This is essentially the same with modSets (a dictionary), but in the functions, you should return the value instead of setting one. So the complementary modGets for the above modSets would be:</p>
+<p class="p2"><br></p>
+<p class="p10">modGets.put(<span class="s8">\level</span>, { myLevelSlider.value; }); <span class="s9">//returns value</span></p>
 <p class="p2"><br></p>
 <p class="p4"><b>group: </b>This is a <a href="SC://Group"><span class="s1">Group</span></a> reserved for your synth. Your <a href="SC://Group"><span class="s1">Group</span></a>s and <a href="SC://Synth"><span class="s1">Synth</span></a>s should have this group in their targets. See <a href="SC://Synth"><span class="s1">Synth</span></a> and <a href="SC://Group"><span class="s1">Group</span></a> help for more info.</p>
 <p class="p2"><br></p>
@@ -114,36 +120,36 @@ span.Apple-tab-span {white-space:pre}
 <p class="p2"><br></p>
 <p class="p8">init</p>
 <p class="p8">{</p>
-<p class="p8"><span class="Apple-tab-span">	</span>window.background_(<span class="s8">Color</span>.gray(0.8));</p>
+<p class="p8"><span class="Apple-tab-span">	</span>window.background_(<span class="s10">Color</span>.gray(0.8));</p>
 <p class="p8">}</p>
 <p class="p2"><br></p>
 <p class="p4">At this stage, if you save your code, recompile the lib, and add the plugin to Hadron.plugins, you should be able to crate the instance from the Hadron GUI, it will be an empty window, with the standard buttons at the bottom. And if you look at the canvas (or the In / Outs window), you will see that our plugin has 2 inputs and 2 outputs. Unfortunately, it doesn't do much yet. We need to define out synth and send it to server first. Here is the code:</p>
 <p class="p2"><br></p>
 <p class="p8">init</p>
 <p class="p8">{</p>
-<p class="p8"><span class="Apple-tab-span">	</span>window.background_(<span class="s8">Color</span>.gray(0.6));</p>
+<p class="p8"><span class="Apple-tab-span">	</span>window.background_(<span class="s10">Color</span>.gray(0.6));</p>
 <p class="p3"><span class="Apple-tab-span">	</span></p>
 <p class="p8"><span class="Apple-tab-span">	</span>fork</p>
 <p class="p8"><span class="Apple-tab-span">	</span>{</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s8">SynthDef</span>(<span class="s9">"hrDoNothing"</span>++uniqueID,</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s10">SynthDef</span>(<span class="s11">"hrDoNothing"</span>++uniqueID,</p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>{</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s8">arg</span> inBus0, inBus1, outBus0, outBus1;</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s10">arg</span> inBus0, inBus1, outBus0, outBus1;</p>
 <p class="p3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s8">var</span> sound = [<span class="s8">InFeedback</span>.ar(inBus0), <span class="s8">InFeedback</span>.ar(inBus1)];</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s10">var</span> sound = [<span class="s10">InFeedback</span>.ar(inBus0), <span class="s10">InFeedback</span>.ar(inBus1)];</p>
 <p class="p3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s8">Out</span>.ar(outBus0, sound[0]);</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s8">Out</span>.ar(outBus1, sound[1]);<span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s10">Out</span>.ar(outBus0, sound[0]);</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s10">Out</span>.ar(outBus1, sound[1]);<span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>}).memStore;</p>
 <p class="p3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s8">Server</span>.default.sync;</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s10">Server</span>.default.sync;</p>
 <p class="p3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>synthInstance =<span class="Apple-converted-space"> </span></p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s8">Synth</span>(<span class="s9">"hrDoNothing"</span>++uniqueID,</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s10">Synth</span>(<span class="s11">"hrDoNothing"</span>++uniqueID,</p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>[</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s10">\inBus0</span>, inBusses[0],</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s10">\inBus1</span>, inBusses[1],</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s10">\outBus0</span>, outBusses[0],</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s10">\outBus1</span>, outBusses[1]</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">\inBus0</span>, inBusses[0],</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">\inBus1</span>, inBusses[1],</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">\outBus0</span>, outBusses[0],</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">\outBus1</span>, outBusses[1]</p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>], target: group);</p>
 <p class="p8"><span class="Apple-tab-span">	</span>}</p>
 <p class="p8">}</p>
@@ -156,7 +162,7 @@ span.Apple-tab-span {white-space:pre}
 <p class="p2"><br></p>
 <p class="p7">HrDoNothing<span class="s2"> : </span>HadronPlugin</p>
 <p class="p8">{</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="s8">var</span> synthInstance;</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="s10">var</span> synthInstance;</p>
 <p class="p3"><span class="Apple-tab-span">	</span></p>
 <p class="p8"><span class="Apple-tab-span">	</span>*new</p>
 <p class="p8"><span class="Apple-tab-span">	</span>{....</p>
@@ -173,10 +179,10 @@ span.Apple-tab-span {white-space:pre}
 <p class="p8">{</p>
 <p class="p8"><span class="Apple-tab-span">	</span>synthInstance.set</p>
 <p class="p8"><span class="Apple-tab-span">	</span>(</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s11">\inBus0</span>, inBusses[0],</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s11">\inBus1</span>, inBusses[1],</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s11">\outBus0</span>, outBusses[0],</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s11">\outBus1</span>, outBusses[1]</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s13">\inBus0</span>, inBusses[0],</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s13">\inBus1</span>, inBusses[1],</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s13">\outBus0</span>, outBusses[0],</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s13">\outBus1</span>, outBusses[1]</p>
 <p class="p8"><span class="Apple-tab-span">	</span>);</p>
 <p class="p8">}</p>
 <p class="p2"><br></p>
@@ -186,7 +192,7 @@ span.Apple-tab-span {white-space:pre}
 <p class="p2"><br></p>
 <p class="p12">HrDoNothing<span class="s2"> : </span>HadronPlugin</p>
 <p class="p8">{</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="s12">var</span> synthInstance;</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="s14">var</span> synthInstance;</p>
 <p class="p3"><span class="Apple-tab-span">	</span></p>
 <p class="p8"><span class="Apple-tab-span">	</span>*initClass</p>
 <p class="p8"><span class="Apple-tab-span">	</span>{</p>
@@ -196,38 +202,38 @@ span.Apple-tab-span {white-space:pre}
 <p class="p8"><span class="Apple-tab-span">	</span>*new</p>
 <p class="p12"><span class="s2"><span class="Apple-tab-span">	</span>{</span>|argParentApp, argIdent, argUniqueID, argExtraArgs, argCanvasXY|</p>
 <p class="p3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">var</span> numIns = 2;</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">var</span> numOuts = 2;</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">var</span> bounds = <span class="s12">Rect</span>(200, 200, 350, 50);</p>
-<p class="p10"><span class="s2"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span><span class="s12">var</span><span class="s2"> name = </span>"HrDoNothing"<span class="s2">;</span></p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>^<span class="s12">super</span>.new(argParentApp, name, argIdent, argUniqueID, argExtraArgs, bounds, numIns, numOuts, argCanvasXY).init;</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s14">var</span> numIns = 2;</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s14">var</span> numOuts = 2;</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s14">var</span> bounds = <span class="s14">Rect</span>(200, 200, 350, 50);</p>
+<p class="p9"><span class="s2"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span><span class="s14">var</span><span class="s2"> name = </span>"HrDoNothing"<span class="s2">;</span></p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>^<span class="s14">super</span>.new(argParentApp, name, argIdent, argUniqueID, argExtraArgs, bounds, numIns, numOuts, argCanvasXY).init;</p>
 <p class="p8"><span class="Apple-tab-span">	</span>}</p>
 <p class="p3"><span class="Apple-tab-span">	</span></p>
 <p class="p8"><span class="Apple-tab-span">	</span>init</p>
 <p class="p8"><span class="Apple-tab-span">	</span>{</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>window.background_(<span class="s12">Color</span>.gray(0.8));</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>window.background_(<span class="s14">Color</span>.gray(0.8));</p>
 <p class="p3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>fork</p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>{</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">SynthDef</span>(<span class="s9">"hrDoNothing"</span>++uniqueID,</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s14">SynthDef</span>(<span class="s11">"hrDoNothing"</span>++uniqueID,</p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>{</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">arg</span> inBus0, inBus1, outBus0, outBus1;</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s14">arg</span> inBus0, inBus1, outBus0, outBus1;</p>
 <p class="p3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">var</span> sound = [<span class="s12">InFeedback</span>.ar(inBus0), <span class="s12">InFeedback</span>.ar(inBus1)];</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s14">var</span> sound = [<span class="s14">InFeedback</span>.ar(inBus0), <span class="s14">InFeedback</span>.ar(inBus1)];</p>
 <p class="p3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">Out</span>.ar(outBus0, sound[0]);</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">Out</span>.ar(outBus1, sound[1]);<span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s14">Out</span>.ar(outBus0, sound[0]);</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s14">Out</span>.ar(outBus1, sound[1]);<span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>}).memStore;</p>
 <p class="p3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">Server</span>.default.sync;</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s14">Server</span>.default.sync;</p>
 <p class="p3"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>synthInstance =<span class="Apple-converted-space"> </span></p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s12">Synth</span>(<span class="s9">"hrDoNothing"</span>++uniqueID,</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s14">Synth</span>(<span class="s11">"hrDoNothing"</span>++uniqueID,</p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>[</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s11">\inBus0</span>, inBusses[0],</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s11">\inBus1</span>, inBusses[1],</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s11">\outBus0</span>, outBusses[0],</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s11">\outBus1</span>, outBusses[1]</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s13">\inBus0</span>, inBusses[0],</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s13">\inBus1</span>, inBusses[1],</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s13">\outBus0</span>, outBusses[0],</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s13">\outBus1</span>, outBusses[1]</p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>], target: group);</p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>}</p>
 <p class="p8"><span class="Apple-tab-span">	</span>}</p>
@@ -236,10 +242,10 @@ span.Apple-tab-span {white-space:pre}
 <p class="p8"><span class="Apple-tab-span">	</span>{</p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>synthInstance.set</p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>(</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s11">\inBus0</span>, inBusses[0],</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s11">\inBus1</span>, inBusses[1],</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s11">\outBus0</span>, outBusses[0],</p>
-<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s11">\outBus1</span>, outBusses[1]</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s13">\inBus0</span>, inBusses[0],</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s13">\inBus1</span>, inBusses[1],</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s13">\outBus0</span>, outBusses[0],</p>
+<p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s13">\outBus1</span>, outBusses[1]</p>
 <p class="p8"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>);</p>
 <p class="p8"><span class="Apple-tab-span">	</span>}</p>
 <p class="p3"><span class="Apple-tab-span">	</span></p>

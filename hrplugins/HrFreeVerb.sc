@@ -89,10 +89,15 @@ HrFreeVerb : HadronPlugin
 			
 		];
 		
-		modulatables.put(\mix, {|argg| mixSlider.valueAction_(argg); });
-		modulatables.put(\room, {|argg| roomSlider.valueAction_(argg); });
-		modulatables.put(\damp, {|argg| dampSlider.valueAction_(argg); });
-		modulatables.put(\level, {|argg| levSlider.valueAction_(argg); });
+		modGets.put(\mix, { mixSlider.value; });
+		modGets.put(\room, { roomSlider.value; });
+		modGets.put(\damp, { dampSlider.value; });
+		modGets.put(\level, { levSlider.value; });
+		
+		modSets.put(\mix, {|argg| mixSlider.valueAction_(argg); });
+		modSets.put(\room, {|argg| roomSlider.valueAction_(argg); });
+		modSets.put(\damp, {|argg| dampSlider.valueAction_(argg); });
+		modSets.put(\level, {|argg| levSlider.valueAction_(argg); });
 	}
 	
 	updateBusConnections

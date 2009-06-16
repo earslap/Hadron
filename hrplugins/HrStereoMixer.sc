@@ -112,7 +112,8 @@ HrStereoMixer : HadronPlugin
 		volSliders.size.do
 		({|cnt|
 		
-			modulatables.put(("level"++cnt).asSymbol, {|argg| volSliders[cnt].valueAction_(argg) });
+			modGets.put(("level"++cnt).asSymbol, { volSliders[cnt].value; });
+			modSets.put(("level"++cnt).asSymbol, {|argg| volSliders[cnt].valueAction_(argg) });
 		});
 	}
 	
