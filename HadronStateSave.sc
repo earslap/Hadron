@@ -39,7 +39,7 @@ HadronStateSave
 				++ 31.asAscii 
 				++ item.uniqueID.asString 
 				++ 31.asAscii
-				++ item.extraArgs.collect({|item| item.class.switch(String, { "\""++item++"\""; }, Symbol, { "\\"++item; }, { item; }); }).asString
+				++ item.extraArgs.asCompileString
 				++ 31.asAscii
 				++ (item.boundCanvasItem.objView.bounds.left@item.boundCanvasItem.objView.bounds.top).asString
 				++ 31.asAscii
@@ -107,7 +107,7 @@ HadronStateSave
 			({|sValue|
 				
 				outFile.write(31.asAscii);
-				outFile.write(sValue.asCompileString);
+				outFile.write(sValue.asCompileString.replace("\n", " ")); //.asCompileString injects linefeeds to some stuff don't really know why...
 			});
 			outFile.write("\n");
 		});

@@ -22,6 +22,9 @@ Hadron
 	
 	*new
 	{
+		if(Main.version.asFloat < 3.31, { "Hadron requires SuperCollider version 3.3.1 or higher.".error; this.halt; });
+		if((GUI.id == \swing) and: { SwingOSC.version < 0.62 }, 
+			{ "Hadron requires SwingOSC version 0.62 or higher.".error; this.halt; });
 		^super.new.init;
 	}
 	
@@ -220,7 +223,7 @@ Hadron
 	
 	displayStatus
 	{|argString, statusMood| //statusMood is -1: error, 0: neutral, 1: success
-	
+
 		statusStString.remove;
 		statusStString = StaticText(statusView, Rect(10, 2, win.view.bounds.width, 15)).string_(argString);
 		statusMood.switch
@@ -242,12 +245,17 @@ Hadron
 			1,
 			{//success text
 				{
+					
 					statusView.background_(Color(0.2, 1, 0.2));
 					4.wait;
-					statusView.background_(Color.gray(0.8));
+					if(win.isClosed.not,
+					{
+						statusView.background_(Color.gray(0.8));
+					});
 				}.fork(AppClock);
 			}
 		);
+		
 	}
 	
 	reorderGraph

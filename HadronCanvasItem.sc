@@ -51,24 +51,22 @@ HadronCanvasItem
 				), 
 			20)
 		)
-		.relativeOrigin_(false)
 		.background_(Color.gray)
 		.focusColor_(Color(alpha: 0))
 		.drawFunc_
 		({|view|
 		
 			var tempString;
-			var vCoords = view.bounds.left@view.bounds.top;
 			
 			Pen.font = Font("Helvetica", 10);
 			tempString = parentPlugin.class.asString;
 			if(parentPlugin.extraArgs.notNil, { tempString = tempString + parentPlugin.extraArgs.asString; });
-			Pen.stringAtPoint(tempString, 5@3 + vCoords);
+			Pen.stringAtPoint(tempString, 5@3);
 			inPortBlobs.do
 			({|blob|
 				
 				Pen.color = Color.black;
-				Pen.addRect(Rect(blob.left + vCoords.x, blob.top + vCoords.y, blob.width, blob.height));
+				Pen.addRect(blob);
 				Pen.fill;
 			});
 			
@@ -76,11 +74,10 @@ HadronCanvasItem
 			({|blob|
 				
 				Pen.color = Color.black;
-				Pen.addRect(Rect(blob.left + vCoords.x, blob.top + vCoords.y, blob.width, blob.height));
+				Pen.addRect(blob);
 				Pen.fill;
 			});
 		})
-		//.mouseOverAction_({|...args| mouseXY = oldMouseXY = (args[1]@args[2]).postln; })
 		.mouseDownAction_
 		({|...args|
 		
@@ -96,7 +93,7 @@ HadronCanvasItem
 			
 			args[5].switch
 			(
-				oldMouseXY = args[1]@args[2];
+				oldMouseXY = args[0].bounds.origin + (args[1]@args[2]);
 				2, //if double clicked
 				{ parentPlugin.showWindow; },
 				1, //on single click
@@ -148,7 +145,8 @@ HadronCanvasItem
 		.mouseMoveAction_
 		({|...args|
 			
-			var delta = args[1]@args[2] - oldMouseXY;
+			var tempXY = args[0].bounds.origin + (args[1]@args[2]);
+			var delta = tempXY - oldMouseXY;
 			parentPlugin.parentApp.isDirty = true;
 			isOnMouseMove = true;
 			if(justSelected,
@@ -159,7 +157,7 @@ HadronCanvasItem
 				justSelected = false;
 			});
 			//args.postln;
-			oldMouseXY = args[1]@args[2];
+			oldMouseXY = tempXY;
 			parentCanvas.selectedItems.do(_.moveBlob(delta));
 			
 			argParentCanvas.drawCables;
