@@ -1,7 +1,7 @@
 HrStereoMixer : HadronPlugin
 {
 	var synthInstances, summerSynth, sourceSlider, parNumIns, volSliders, volNums,
-	transitBus, mixerGroup;
+	transitBus, mixerGroup, currentSlValues;
 	
 	*new
 	{|argParentApp, argIdent, argUniqueID, argExtraArgs, argCanvasXY|
@@ -24,6 +24,7 @@ HrStereoMixer : HadronPlugin
 		synthInstances = List.new;
 		volSliders = List.new;
 		volNums = List.new;
+		currentSlValues = List.new;
 		mixerGroup = Group.new(target: group);
 		
 		transitBus = Bus.audio(Server.default, 2);
@@ -35,6 +36,7 @@ HrStereoMixer : HadronPlugin
 			volSliders.add(HrSlider(window, Rect(25+(40*cnt), 20, 40, 100)).value_(1)
 				.action_
 				({|sld| 
+					currentSlValues[cnt] = sld.value;
 					volNums[cnt].valueAction_(sld.value); 
 				}) 
 			);
@@ -46,6 +48,8 @@ HrStereoMixer : HadronPlugin
 					volSliders[cnt].value_(nmb.value);
 				}) 
 			);
+			
+			currentSlValues.add(1);
 		});
 		
 		fork
@@ -112,8 +116,15 @@ HrStereoMixer : HadronPlugin
 		volSliders.size.do
 		({|cnt|
 		
-			modGets.put(("level"++cnt).asSymbol, { volSliders[cnt].value; });
-			modSets.put(("level"++cnt).asSymbol, {|argg| volSliders[cnt].valueAction_(argg) });
+			modGets.put(("level"++cnt).asSymbol, { currentSlValues[cnt]; });
+			modSets.put(("level"++cnt).asSymbol, 
+			{|argg| 
+				
+				synthInstances[cnt].set(\mul, argg); 
+				currentSlValues[cnt] = argg;
+				
+				{ volSliders[cnt].value_(argg) }.defer;
+			});
 		});
 	}
 	

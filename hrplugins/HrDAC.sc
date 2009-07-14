@@ -1,13 +1,13 @@
 HrDAC : HadronPlugin
 {
-	var synthInstance, levelSlider, limButton;
+	var synthInstance, levelSlider, limButton, lastLevel;
 	
 	*new
 	{|argParentApp, argIdent, argUniqueID, argExtraArgs, argCanvasXY|
 		
 		var numIns = 2;
 		var numOuts = 0;
-		var bounds = Rect((Window.screenBounds.width - 250).rand, rrand(90, Window.screenBounds.height), 250, 90);
+		var bounds = Rect((Window.screenBounds.width - 250).rand, (Window.screenBounds.width - 90).rand, 250, 90);
 		var name = "HrDAC";
 		^super.new(argParentApp, name, argIdent, argUniqueID, argExtraArgs, bounds, numIns, numOuts, argCanvasXY).init;
 	}
@@ -15,12 +15,13 @@ HrDAC : HadronPlugin
 	init
 	{
 		window.background_(Color.gray(0.9));
+		lastLevel = 1;
 		helpString = "In1/In2 audio inputs. Outputs not used, outputs to your hardware outs.";
 		
 		StaticText(window, Rect(10, 10, 100, 20)).string_("Level:");
 		levelSlider = HrSlider(window, Rect(10, 30, 200, 20))
 		.value_(1)
-		.action_({|sld| synthInstance.set(\level, sld.value); });
+		.action_({|sld| synthInstance.set(\level, sld.value); lastLevel = sld.value; });
 		
 		StaticText(window, Rect(10, 60, 100, 20)).string_("Limiter/LeakDC:");
 		limButton = Button(window, Rect(110, 60, 100, 20))
@@ -55,14 +56,14 @@ HrDAC : HadronPlugin
 		
 		saveGets =
 		[
-			{ levelSlider.value; },
+			{ lastLevel; },
 			{ levelSlider.boundMidiArgs; },
 			{ limButton.value; }
 		];
 		
 		saveSets =
 		[
-			{|argg| levelSlider.valueAction_(argg); },
+			{|argg| lastLevel = argg; synthInstance.set(\mul, argg); { levelSlider.value_(argg); }.defer; },
 			{|argg| levelSlider.boundMidiArgs_(argg); },
 			{|argg| limButton.valueAction_(argg); }
 		];

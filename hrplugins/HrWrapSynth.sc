@@ -1,6 +1,6 @@
 HrWrapSynth : HadronPlugin
 {
-	var synthInstance, sliders, numBoxes, synthBusArgs, startButton, storeArgs;
+	var <synthInstance, sliders, numBoxes, setFunctions, synthBusArgs, startButton, storeArgs, specs;
 	
 	*new
 	{|argParentApp, argIdent, argUniqueID, argExtraArgs, argCanvasXY|
@@ -37,9 +37,10 @@ HrWrapSynth : HadronPlugin
 	
 	init
 	{
-		var sdControls, sName, specs;
+		var sdControls, sName;
 		sliders = List.new;
 		numBoxes = List.new;
+		setFunctions = List.new;
 		storeArgs = Dictionary.new;
 		
 		helpString = "This plugin reads a SynthDef from SynthDescLib.default and integrates it with the Hadron system.";	
@@ -86,16 +87,22 @@ HrWrapSynth : HadronPlugin
 				.action_
 				({|sld| 
 					
-					var mapped = specs.at(item.asSymbol).map(sld.value);
-					storeArgs.put(item.asSymbol, mapped);
-					synthInstance.set(item, mapped);
-					numBoxes[count].value_(mapped);
+					setFunctions[count].value(sld.value);
 				});
 			);
 			
+			setFunctions.add
+			({|val|
+				
+				var mapped = specs.at(item.asSymbol).map(val.value);
+				storeArgs.put(item.asSymbol, val);
+				synthInstance.set(item, mapped);
+				{ numBoxes[count].value_(mapped); }.defer;
+			});
+			
 			//add the modulatable entry for the control
-			modGets.put(item.asSymbol, { sliders[count].value; });
-			modSets.put(item.asSymbol, {|argg| sliders[count].valueAction_(argg); });
+			modGets.put(item.asSymbol, { storeArgs.at(item.asSymbol); });
+			modSets.put(item.asSymbol, {|argg| setFunctions[count].value(argg); { sliders[count].value_(argg); }.defer; });
 			
 			
 		});

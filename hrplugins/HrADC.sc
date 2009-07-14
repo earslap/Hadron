@@ -1,6 +1,6 @@
 HrADC : HadronPlugin
 {
-	var synthInstance, lButton, rButton, levSlider;
+	var synthInstance, lButton, rButton, levSlider, lastLevel;
 	
 	*new
 	{|argParentApp, argIdent, argUniqueID, argExtraArgs, argCanvasXY|
@@ -16,6 +16,8 @@ HrADC : HadronPlugin
 	{
 		
 		window.background_(Color.gray(0.7));
+		lastLevel = 0;
+		
 		helpString = "Inputs are not used. Outputs 1/2 are hardware inputs of your interface(L/R).";
 		StaticText(window, Rect(10, 10, 50, 20)).string_("Inputs:");
 		
@@ -68,7 +70,7 @@ HrADC : HadronPlugin
 		});
 		
 		levSlider = HrSlider(window, Rect(140, 10, 200, 20))
-		.action_({|sl| synthInstance.set(\mul, sl.value); });
+		.action_({|sl| synthInstance.set(\mul, sl.value); lastLevel = sl.value; });
 		
 		
 		fork
@@ -108,8 +110,8 @@ HrADC : HadronPlugin
 			{|argg| levSlider.automationData_(argg); }
 		];
 		
-		modGets.put(\level, { levSlider.value; });
-		modSets.put(\level, {|argg| levSlider.valueAction_(argg); });
+		modGets.put(\level, { lastLevel; });
+		modSets.put(\level, {|argg| lastLevel = argg; synthInstance.set(\mul, argg); { levSlider.value_(argg); }.defer; });
 		
 	}
 	

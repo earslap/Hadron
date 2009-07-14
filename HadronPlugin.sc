@@ -60,7 +60,8 @@ HadronPlugin
 				
 		oldWinBounds = Rect(argBounds.left, argBounds.top, argBounds.width, argBounds.height + 40);
 		outerWindow = Window(argName + ident, oldWinBounds, resizable: false)
-		.userCanClose_(false);
+		.userCanClose_(false)
+		.acceptsMouseOver_(true);
 		
 		outerWindow.view.keyDownAction_
 		({|...args|
@@ -104,7 +105,8 @@ HadronPlugin
 		
 		Button(outerWindow, Rect(10, oldWinBounds.height - 30, 70, 20))
 		.states_([["In/Outs"]])
-		.action_({ this.prShowConnections; });
+		.action_({ this.prShowConnections; })
+		.visible_(if((inBusses.size == 0) and: { outBusses.size == 0; }, { false; }, { true; }));
 		
 		window = CompositeView(outerWindow, Rect(0, 0, argBounds.width, argBounds.height));
 		

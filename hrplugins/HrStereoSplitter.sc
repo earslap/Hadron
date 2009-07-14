@@ -1,7 +1,7 @@
 HrStereoSplitter : HadronPlugin
 {
 	var synthInstances, summerSynth, sourceSlider, parNumIns, volSliders, volNums,
-	transitBus, mixerGroup;
+	transitBus, mixerGroup, currentSlValues;
 	
 	*new
 	{|argParentApp, argIdent, argUniqueID, argExtraArgs, argCanvasXY|
@@ -23,6 +23,7 @@ HrStereoSplitter : HadronPlugin
 		synthInstances = List.new;
 		volSliders = List.new;
 		volNums = List.new;
+		currentSlValues = List.new;
 		
 		(outBusses.size/2).do
 		({|cnt|
@@ -31,6 +32,8 @@ HrStereoSplitter : HadronPlugin
 			volSliders.add(HrSlider(window, Rect(25+(40*cnt), 20, 40, 100)).value_(1)
 				.action_
 				({|sld| 
+					
+					currentSlValues[cnt] = sld.value;
 					volNums[cnt].valueAction_(sld.value); 
 				}) 
 			);
@@ -93,8 +96,15 @@ HrStereoSplitter : HadronPlugin
 		volSliders.size.do
 		({|cnt|
 		
-			modGets.put(("level"++cnt).asSymbol, { volSliders[cnt].value; });
-			modSets.put(("level"++cnt).asSymbol, {|argg| volSliders[cnt].valueAction_(argg) });
+			modGets.put(("level"++cnt).asSymbol, { currentSlValues[cnt]; });
+			modSets.put(("level"++cnt).asSymbol,
+			{|argg| 
+				
+				synthInstances[cnt].set(\mul, argg); 
+				currentSlValues[cnt] = argg;
+				
+				{ volSliders[cnt].value_(argg) }.defer;
+			});
 		});
 	}
 	

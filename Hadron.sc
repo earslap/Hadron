@@ -11,7 +11,6 @@ Hadron
 		[
 			HrADC,
 			HrDAC,
-			HrFreeVerb,
 			HrStereoMixer,
 			HrStereoSplitter,
 			HrSimpleModulator,
@@ -69,7 +68,7 @@ Hadron
 			.states_([["Save"]])
 			.action_({ this.prShowSave; });
 			
-			Button(win, Rect(430, 15, 50, 20))
+			HrButton(win, Rect(430, 15, 50, 20))
 			.states_([["Collide", Color.black, Color(0.7, 0.7, 1)]])
 			.action_({ alivePlugs.do(_.collide); });
 			
