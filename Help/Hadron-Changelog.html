@@ -11,14 +11,15 @@ p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px Helvetica}
 p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
 p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
 span.s1 {text-decoration: underline}
-span.s2 {color: #1320f3}
-span.s3 {color: #2e3ad9}
-span.s4 {color: #2a36de}
-span.s5 {color: #1a27ed}
-span.s6 {color: #323dd4}
-span.s7 {color: #3c46c7}
-span.s8 {color: #383fb1}
-span.s9 {color: #3d44a0}
+span.s2 {color: #1a27ed}
+span.s3 {color: #0000ff}
+span.s4 {color: #323dd4}
+span.s5 {color: #2e3ad9}
+span.s6 {color: #202de8}
+span.s7 {color: #3640cf}
+span.s8 {color: #3f48c3}
+span.s9 {color: #3a41ad}
+span.s10 {color: #3f459d}
 </style>
 </head>
 <body>
@@ -27,13 +28,13 @@ span.s9 {color: #3d44a0}
 <p class="p3"><b>v1.6 (July 14, 2009)</b></p>
 <p class="p2"><br></p>
 <p class="p3"><span class="s1">other:</span></p>
-<p class="p3">* HadronPlugins <a href="SC://Quark"><span class="s2">Quark</span></a> is released with 2 plugins, <a href="../../../Extensions/HadronPlugins/Help/HrPresetMorph.html"><span class="s2">HrPresetMorph</span></a> and <a href="../../../Extensions/HadronPlugins/Help/HrCodeSequencer.html"><span class="s2">HrCodeSequencer</span></a>.</p>
-<p class="p3">* <a href="HadronPlugin.html"><span class="s3">HadronPlugin</span></a> window has acceptsMouseOver set to true now.</p>
-<p class="p3">* <a href="../hrplugins/Help/HrWrapSynth.html"><span class="s4">HrWrapSynth</span></a> synth instance has a getter now.</p>
+<p class="p3">* HadronPlugins <a href="SC://Quark"><span class="s2">Quark</span></a> is released with 2 plugins, <a href="../../HadronPlugins/Help/HrPresetMorph.html"><span class="s3">HrPresetMorph</span></a> and <a href="../../HadronPlugins/Help/HrCodeSequencer.html"><span class="s3">HrCodeSequencer</span></a>.</p>
+<p class="p3">* <a href="HadronPlugin.html"><span class="s4">HadronPlugin</span></a> window has acceptsMouseOver set to true now.</p>
+<p class="p3">* <a href="../hrplugins/Help/HrWrapSynth.html"><span class="s5">HrWrapSynth</span></a> synth instance has a getter now.</p>
 <p class="p3">* Collide button in main GUI is an HrButton now for midi triggering.</p>
 <p class="p3">* Some little GUI tweaks.</p>
-<p class="p3">* HrFreeVerb is removed from the default plugins, as such a plugin can easily be made as a <a href="SC://SynthDef"><span class="s5">SynthDef</span></a> and wrapped for the environment with the <a href="../hrplugins/Help/HrWrapSynth.html"><span class="s5">HrWrapSynth</span></a> plugin.</p>
-<p class="p3">* All plugins now defer their GUI updates when they are being modulated from outside sources. The actual sending of messages to synths is not affected by the deferring operation. This done so that the modulatable values can be called from clocks other than the <a href="SC://AppClock"><span class="s5">AppClock</span></a>.</p>
+<p class="p3">* HrFreeVerb is removed from the default plugins, as such a plugin can easily be made as a <a href="SC://SynthDef"><span class="s6">SynthDef</span></a> and wrapped for the environment with the <a href="../hrplugins/Help/HrWrapSynth.html"><span class="s6">HrWrapSynth</span></a> plugin.</p>
+<p class="p3">* All plugins now defer their GUI updates when they are being modulated from outside sources. The actual sending of messages to synths is not affected by the deferring operation. This done so that the modulatable values can be called from clocks other than the <a href="SC://AppClock"><span class="s6">AppClock</span></a>.</p>
 <p class="p2"><br></p>
 <p class="p3"><b>v1.5 (July 4, 2009)</b></p>
 <p class="p3"><span class="s1">fixed bugs:</span></p>
@@ -42,7 +43,7 @@ span.s9 {color: #3d44a0}
 <p class="p3">* Fixed the code that was spitting a harmless error message that would sometimes appear some seconds after Hadron quits.</p>
 <p class="p2"><br></p>
 <p class="p3"><span class="s1">added features:</span></p>
-<p class="p3">* A new widget <a href="../widgets/Help/HrButton.html"><span class="s6">HrButton</span></a>, which is essentially the same with <a href="SC://Button"><span class="s7">Button</span></a>, but can do midi learn.</p>
+<p class="p3">* A new widget <a href="../widgets/Help/HrButton.html"><span class="s7">HrButton</span></a>, which is essentially the same with <a href="SC://Button"><span class="s8">Button</span></a>, but can do midi learn.</p>
 <p class="p2"><br></p>
 <p class="p2"><br></p>
 <p class="p3"><b>v1.4 (June 16, 2009)</b></p>
@@ -50,11 +51,11 @@ span.s9 {color: #3d44a0}
 <p class="p3">* Now conforming to the new relativeOrigin change in views.</p>
 <p class="p2"><br></p>
 <p class="p3"><span class="s1">other:</span></p>
-<p class="p3">* An addition to the plugin interface to be able to get the values for modulatable parameters from running plugins (needed for implementing plugins that do preset management etc. that needs access to those values). So the modulatables variable is changed to modSets, and the new modGets is introduced. See <a href="HadronPlugin.html"><span class="s8">HadronPlugin</span></a> help and <a href="Writing-Hadron-Plugins.html"><span class="s8">Writing-Hadron-Plugins</span></a><span class="s8">.</span></p>
+<p class="p3">* An addition to the plugin interface to be able to get the values for modulatable parameters from running plugins (needed for implementing plugins that do preset management etc. that needs access to those values). So the modulatables variable is changed to modSets, and the new modGets is introduced. See <a href="HadronPlugin.html"><span class="s9">HadronPlugin</span></a> help and <a href="Writing-Hadron-Plugins.html"><span class="s9">Writing-Hadron-Plugins</span></a><span class="s9">.</span></p>
 <p class="p2"><br></p>
 <p class="p3"><b>v1.3 (June 03, 2009)</b></p>
 <p class="p3"><span class="s1">added features:</span></p>
-<p class="p3">* New plugin <a href="../hrplugins/Help/HrWrapSynth.html"><span class="s9">HrWrapSynth</span></a> which wraps SynthDefs and integrates them to te Hadron system by auto-generating their GUI, and handling in / out connections.</p>
+<p class="p3">* New plugin <a href="../hrplugins/Help/HrWrapSynth.html"><span class="s10">HrWrapSynth</span></a> which wraps SynthDefs and integrates them to te Hadron system by auto-generating their GUI, and handling in / out connections.</p>
 <p class="p3">* General usability additions</p>
 <p class="p3">* Connection manager is intelligent now. The text box for typing in / out pairs now show the most likely connection prewritten for less typing.</p>
 <p class="p3">* "Collide" button added to main gui, when pressed, collide method of all alive plugin instances are executed.<span class="Apple-converted-space"> </span></p>
@@ -69,7 +70,7 @@ span.s9 {color: #3d44a0}
 <p class="p3">* Fixed the bug where keys that were being typed in the text box on canvas were being interpreted by the canvas keydown handler. Now they don't bubble up to the parent view.</p>
 <p class="p2"><br></p>
 <p class="p3"><span class="s1">other:</span></p>
-<p class="p3">* A little addition to the plugin interface (*initClass addition, see <a href="Writing-Hadron-Plugins.html"><span class="s9">Writing-Hadron-Plugins</span></a> help)</p>
+<p class="p3">* A little addition to the plugin interface (*initClass addition, see <a href="Writing-Hadron-Plugins.html"><span class="s10">Writing-Hadron-Plugins</span></a> help)</p>
 <p class="p2"><br></p>
 <p class="p3">-----------</p>
 <p class="p3"><b>v1.2 (May 29, 2009)</b></p>
