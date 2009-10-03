@@ -232,9 +232,9 @@ Hadron
 				
 				win.front;				
 				{
-					statusView.background_(Color(1, 0.2, 0.2));
+					{ statusView.background_(Color(1, 0.2, 0.2)); }.defer;
 					4.wait;
-					statusView.background_(Color.gray(0.8));
+					{ statusView.background_(Color.gray(0.8)); }.defer;
 				}.fork(AppClock);
 			},
 			0,
@@ -245,11 +245,11 @@ Hadron
 			{//success text
 				{
 					
-					statusView.background_(Color(0.2, 1, 0.2));
+					{ statusView.background_(Color(0.2, 1, 0.2)); }.defer;
 					4.wait;
 					if(win.isClosed.not,
 					{
-						statusView.background_(Color.gray(0.8));
+						{ statusView.background_(Color.gray(0.8)); }.defer;
 					});
 				}.fork(AppClock);
 			}
