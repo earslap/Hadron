@@ -45,6 +45,8 @@ HrStereoSplitter : HadronPlugin
 					volSliders[cnt].value_(nmb.value);
 				}) 
 			);
+			
+			currentSlValues.add(1);
 		});
 		
 		fork

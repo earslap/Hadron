@@ -47,7 +47,7 @@ HadronCanvasItem
 				max
 				(
 					max(100, (numMaxPorts * 10) + 10),
-					((this.class.asString.size + parentPlugin.extraArgs.asString.size) * 6) + 10
+					((this.class.asString.size + parentPlugin.extraArgs.asString.size + parentPlugin.ident.size) * 5) + 10
 				), 
 			20)
 		)
@@ -60,6 +60,7 @@ HadronCanvasItem
 			
 			Pen.font = Font("Helvetica", 10);
 			tempString = parentPlugin.class.asString;
+			tempString = tempString + parentPlugin.ident;
 			if(parentPlugin.extraArgs.notNil, { tempString = tempString + parentPlugin.extraArgs.asString; });
 			Pen.stringAtPoint(tempString, 5@3);
 			inPortBlobs.do

@@ -47,11 +47,13 @@ HadronPlugin
 		uniqueID = argUniqueID ? parentApp.prGiveUniqueId;
 		isHidden = false;
 		//argCanvasXY.class.postln;
-		boundCanvasItem = HadronCanvasItem(parentApp.canvasObj, this, argCanvasXY.x, argCanvasXY.y);
+		
 		
 		
 		name = argName;
 		ident = argIdent; //ident is to identify an instance when there is more than one instance.
+		
+		boundCanvasItem = HadronCanvasItem(parentApp.canvasObj, this, argCanvasXY.x, argCanvasXY.y);
 		
 		conWindow = Window.new.close; //hacky but it should respond to .isClosed true by default...
 		
